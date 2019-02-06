@@ -20,14 +20,14 @@ passport.use(
 
 
 router.get(
-    "/auth/google",
+    "/google",
     passport.authenticate("google", {
         scope: ["profile", "email"]
     })
 );
 
 router.get(
-    "/auth/google/callback",
+    "/google/callback",
     passport.authenticate('google'));
 
 

@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var googleOauth = require('./routes/authRoutes');
 
 var app = express();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, './client/build')));
 
+app.use('/auth', googleOauth);
 app.use('/users', usersRouter);
 app.use('*', indexRouter);
 
