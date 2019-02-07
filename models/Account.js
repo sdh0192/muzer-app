@@ -1,14 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Base = require('./AccountBase');
 
 const AccountSchema = new Schema({
     
-    email: { type: String, required: true },
-    
-    password: { type: String, required: true },
-    
-    profile: { type: Schema.Types.ObjectId, ref: 'Profile' },
+    password: { type: String, required: true }
 });
 
-let Account = mongoose.model("Account", AccountSchema);
+let Account = Base.discriminator("Account", AccountSchema);
 module.exports = Account;
