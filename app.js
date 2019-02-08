@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
 var app = express();
 
 require("./validation/passport")
@@ -19,6 +20,7 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, './client/build')));
 
+app.use('/auth', googleOauth);
 app.use('/users', usersRouter);
 app.use('*', indexRouter);
 
