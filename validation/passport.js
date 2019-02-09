@@ -12,7 +12,8 @@ passport.use(
 		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 		callbackURL: "/auth/google/callback"
 	},
-	(accessToken, refreshToken, profile, done) => {
+	(accessToken, refreshToken, profile, done) => 
+	{
 		console.log("access token: " + accessToken);
 		console.log("refresh token: " + refreshToken);
 		console.log(profile);
@@ -20,13 +21,16 @@ passport.use(
 	})
 );
 
-passport.use(new LocalStrategy((username, password, cb) => 
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+}, (email, password, cb) => 
 {
 	mongoose.connect(MONGODB_URI, {useNewUrlParser: true}, error => 
     {
         if(error) return cb(error);
 
-        db.Account.findOne({ email: username })
+        db.Account.findOne({ email: email })
 			.populate('Profile')
 			.exec((error, user) => 
 			{

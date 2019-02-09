@@ -3,15 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const passport = require("./validation/passport");
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const authRouter = require("./routes/authRoutes");
 
 var app = express();
 
-const passport = require("./validation/passport");
-app.use( passport.initialize());
-app.use( passport.session());
-require("./routes/authRoutes")(app);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -20,6 +20,7 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, './client/build')));
 
+app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('*', indexRouter);
 
