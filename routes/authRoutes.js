@@ -1,4 +1,4 @@
-const passport = require('passport');
+const passport = require('../validation/passport');
 
 module.exports = (app) => {
 app.get(

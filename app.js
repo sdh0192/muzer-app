@@ -8,10 +8,10 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-require("./validation/passport")
+const passport = require("./validation/passport");
+app.use( passport.initialize());
+app.use( passport.session());
 require("./routes/authRoutes")(app);
-
-
 
 app.use(logger('dev'));
 app.use(express.json());
