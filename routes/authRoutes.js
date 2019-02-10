@@ -5,19 +5,6 @@ const mongoose = require("mongoose");
 var db = require("../models");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/webScraper";
 
-function ensureAuthenticated(req, res, next)
-{
-    var a = req.isAuthenticated()
-    if(a)
-    {
-	    return next();
-    } 
-    else 
-    {
-        res.redirect('/');
-	}
-}
-
 router.get("/google", passport.authenticate("google", 
 { 
 	scope: ["profile", "email"] 
