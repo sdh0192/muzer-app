@@ -2,6 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require("mongoose");
+const sha3_224 = require('js-sha3').sha3_224;
 var db = require("../models");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/webScraper";
 
@@ -44,7 +45,7 @@ passport.use(new LocalStrategy({
 					mongoose.disconnect();
 					return cb(null, false);
 				}
-				else if (user.password != password)
+				else if (user.password != sha3_224(password))
 				{
 					mongoose.disconnect();
 					return cb(null, false);
