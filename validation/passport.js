@@ -14,16 +14,34 @@ passport.use(
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 			callbackURL: "/auth/google/callback"
 		},
-		(accessToken, refreshToken, profile, done) => {
-			db.GoogleAccount.findOne({ googleId: profile.id }).then((existingUser) => {
-				if (existingUser) {
-					// we already have a record with the given profile ID
-					done(null, existingUser);
-				} else {
-					// we don't have a record of a user with the given profile ID, make a new record
-					new GoogleAccount({ googleId: profile.id, email: profile.emails[0].value }).save().then(user => done(null, user));
-				}
-			});
+		(accessToken, refreshToken, profile, done) => 
+		{
+			mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, error => 
+			{
+				if (error) return done(error, null);
+
+				db.GoogleAccount.findOne({ googleId: profile.id })
+					.then(existingUser => 
+					{
+						if (existingUser) 
+						{
+							// we already have a record with the given profile ID
+							mongoose.disconnect();
+							return done(null, existingUser);
+						} 
+						else 
+						{
+							// we don't have a record of a user with the given profile ID, make a new record
+							new db.GoogleAccount({ googleId: profile.id, email: profile.emails[0].value })
+								.save()
+								.then(user => 
+								{
+									mongoose.disconnect();
+									return done(null, user);
+								});
+						}
+					});
+			});	
 		})
 );
 
