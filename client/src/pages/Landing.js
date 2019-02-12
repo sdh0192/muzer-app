@@ -1,29 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import LandingLogo from '../components/LandingLogo';
 
-class Landing extends React.Component {
-    render () {
-        return (
-   <div>
-        <div>
-            <img src="image/MuzerLogo.jpeg"  width="150" alt="App Logo says Muzer"/>
-        </div>
-        
-        <div>
-            <p>
-        <button type="button">Sign Up</button> or <span id="not_signed_in33q5qr8bb9m9">Sign in with Google</span>
-            </p>
-        </div>
-  
-        <div>
-            <p>Already have an account?</p>
-            <button type="button">Sign In</button>
-            <a href="">or sign in as guest</a>
-  
-        </div>
-    </div>
-        );
-          
-    }
-  }
+const Landing = (props) => (
 
-  export default Landing;
+    <Container>
+        <LandingLogo />
+        <Row className="justify-content-md-center">
+            <Col xs lg="6" className="text-center">
+                <Button href="/signup" size="lg">Sign Up</Button>
+                <span> or </span>
+                <Button href="/auth/google" variant="dark" size="lg">Sign in with Google</Button>
+            </Col>
+        </Row>
+        <Row>
+            <Col xs="12" className="text-center">
+                <p>Already have an account?</p>
+            </Col>
+            <Col xs="12" className="text-center">
+                <Button href="/signin">Sign In</Button>
+                <span> or </span>
+                <Link to="/home">continue as guest</Link> 
+            </Col>
+        </Row>
+    </Container>
+);
+
+export default Landing;

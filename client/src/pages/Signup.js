@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import LandingLogo from '../components/LandingLogo';
 
-class SignIn extends React.Component
+class SignUp extends React.Component
 {
     render() 
     {
@@ -22,6 +22,10 @@ class SignIn extends React.Component
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
+                            <Form.Group controlId="confirmPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Confirm Password" />
+                            </Form.Group>
                             <Form.Group controlId="formBasicChecbox">
                                 <Form.Check type="checkbox" label="Check me out" />
                             </Form.Group>
@@ -34,4 +38,4 @@ class SignIn extends React.Component
     }
 }
 
-export default SignIn;
+export default SignUp;
