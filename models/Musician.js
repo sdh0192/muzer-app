@@ -4,9 +4,9 @@ const ProfileSchema = require('./Profile');
 
 const MusicianProfileSchema = new Schema({
 
-    FristName: { type: String, require: true },
+    firstName: { type: String, require: true },
 
-    LastName: { type: String, require: true },
+    lastName: { type: String, require: true },
 
     city: { type: String, require: true },
 
