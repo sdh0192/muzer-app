@@ -1,6 +1,12 @@
 import axios from "axios";
 
 export default {
+
+	postSignin: function(credentials)
+	{
+		console.log("here");
+		return axios.post("auth/login", credentials);
+	},
   // Gets all 
   get: function() {
     return axios.get("/api/");
