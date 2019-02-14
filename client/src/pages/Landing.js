@@ -11,9 +11,9 @@ const Landing = (props) => (
             <LandingLogo />
             <Row className="justify-content-md-center">
                 <Col xs lg="6" className="text-center">
-                    <Button  variant="primary" href="/signup" size="lg">Sign Up</Button>
+                    <Button variant="primary" href="/signup" size="lg">Sign Up</Button>
                     <span> or </span>
-                    <Button  variant="outline-dark" href="/auth/google" size="lg">Sign in with Google</Button>
+                    <Button variant="outline-dark" href="/auth/google" size="lg">Sign in with Google</Button>
                 </Col>
             </Row>
             <Row>
@@ -23,7 +23,7 @@ const Landing = (props) => (
                 <Col xs="12" className="text-center">
                     <Button variant="outline-primary" href="/signin">Sign In</Button>
                     <span> or </span>
-                    <Link to="/home">continue as guest</Link> 
+                    <Link to="/home">continue as guest</Link>
                 </Col>
             </Row>
         </Container>

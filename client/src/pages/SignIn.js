@@ -2,23 +2,22 @@ import React from "react";
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import LandingLogo from '../components/LandingLogo';
 import Footer from "../components/Footer";
+import ListControl from "../components/ListControl";
 import api from "../utils/API";
 
-class SignIn extends React.Component
-{
+class SignIn extends React.Component {
     state = {
         error: false,
         message: null
     }
 
-    clearError()
-    {
+    clearError() {
         return this.setState({ error: false, message: null });
     }
 
     validateLogin(e) {
         e.preventDefault();
-
+        console.log(this.state.contacts);
         this.clearError();
 
         var credentials = {
@@ -26,32 +25,27 @@ class SignIn extends React.Component
             password: e.target.password.value
         }
 
-        console.log(credentials);
-
-        if (credentials.password.length < 6) return this.setState({ 
-            error: true, 
-            message: "Password does not meet the lenght requirement." 
+        if (credentials.password.length < 6) return this.setState({
+            error: true,
+            message: "Password does not meet the lenght requirement."
         });
 
         api.postSignin(credentials).then(response => {
-            console.log(response.data);
-            if(response.error)
-            {               
-                this.setState(response);
+            if (response.data.error) {
+                this.setState(response.data);
             }
-            else {  }
+            else { window.location.replace("/home") }
         });
     }
 
-    render() 
-    {
+    render() {
         return (
             <div>
                 <Container>
                     <LandingLogo />
                     <Row className="justify-content-md-center">
                         <Col xs lg="6">
-                            { this.state.error ? ( <Alert variant="danger">{this.state.message}</Alert> ) : null }
+                            {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
                             <Form action="/auth/login" method='POST' onSubmit={this.validateLogin.bind(this)}>
                                 <Form.Group controlId="email">
                                     <Form.Label>Email address</Form.Label>
