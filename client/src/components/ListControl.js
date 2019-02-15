@@ -66,3 +66,11 @@ class ListControl extends React.Component {
 }
 
 export default ListControl;
+
+
+// to use this Control import item
+
+// <ListControl fields={["field1","field2","filed3"]} values={this.state.yourValues} />
+
+// the values propertie should one of the properties in the state 
+// to be able to track the changes in the control in the parent's state 
