@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import LandingLogo from '../components/LandingLogo';
 import Footer from "../components/Footer";
 
@@ -11,22 +11,22 @@ const profileLanding = (Props) => (
             <LandingLogo />
             <Row className="justify-content-md-center">
                 <Col xs lg="6" className="text-center">
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-basic">
-                            What Are You?
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="">Musician</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Band</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Venue</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                   <Form>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                   <Form.Label className="text-primary">What Are You?</Form.Label>
+                   <Form.Control as="select">
+                       <option>Musician</option>
+                       <option>Band</option>
+                       <option>Venue</option>
+                    
+                    </Form.Control>
+                     </Form.Group>
+                   </Form>
                 </Col>    
             </Row>
-                <Row class="spacing">
+                <Row className="spacing">
                     <Col className="text-center">
-                       <Button variant="outline-primary" type="submit">Continue</Button>
+                       <Button variant="outline-primary" type="submit" >Continue</Button>
                     </Col>
                 </Row>
         </Container>

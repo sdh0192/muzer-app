@@ -9,6 +9,11 @@ export default {
   postSignup: function (credentials) {
     return axios.post("auth/signup", credentials);
   },
+
+  postmusicianProfile:function() {
+     return axios.post();
+  },
+
   // Gets all 
   get: function () {
     return axios.get("/api/");
