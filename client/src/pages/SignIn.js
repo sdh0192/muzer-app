@@ -2,7 +2,9 @@ import React from "react";
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import LandingLogo from '../components/LandingLogo';
 import Footer from "../components/Footer";
-import ListControl from "../components/ListControl";
+// import ListControl from "../components/ListControl";
+// import CalendarControl from "../components/CalendarControl";
+
 import api from "../utils/API";
 
 class SignIn extends React.Component {
@@ -17,7 +19,6 @@ class SignIn extends React.Component {
 
     validateLogin(e) {
         e.preventDefault();
-        console.log(this.state.contacts);
         this.clearError();
 
         var credentials = {
