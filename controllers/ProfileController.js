@@ -27,7 +27,7 @@ const ProfileController = {
         });
     },
 
-    postProfile: function (res, req) {
+    postProfile: function (req, res) {
         let newProfile = null;
         //find which type of profile it is, then run the function accordingly to return the new constructor
         if (req.body.profileType === "musician") {
@@ -117,20 +117,55 @@ const ProfileController = {
         return newVenue;
     },
 
-    updateProfile: function () {
-        throw new Error("Function not implemented.");
+    updateAvail: function (req, res) {
+        mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, error => {
+            if (error)
+                return res.json({ error: true, message: "Connection to the Database failed." });
+            // find user's availabiility array
+            db.Profile.findById(id, req.body.profileId)
+                .exec((error, profile) => {
+                    // if error, return error
+                    if (error) {
+                        mongoose.disconnect();
+                        return res.json({ error: true, message: "Connection to the Database failed." });
+                    }
+                    //if profile found, return profile
+                    else if (profile) {
+                        profile.save(function (error) {
+                            if (error) {
+                                mongoose.disconnect();
+                                return res.json({ error: true, message: "Error saving your data!" })
+                            }
+                            mongoose.disconnect();
+                            return res.json(profile);
 
-        // will validate incomming information
-        // will search for the profile
-        // will update the profile if found
+                        }
+                        )
+                    }
+                });
+        });
     },
 
     deleteProfile: function () {
-        throw new Error("Function not implemented.");
-
-        // will search for the profile
-        // will delete the profile if found
+        mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, error => {
+            if (error)
+                return res.json({ error: true, message: "Connection to the Database failed." });
+            // db query to find and delete profile using ID
+            Profile.findByIdAndDelete(req.body.profileId)
+                .exec((error) => {
+                    // if error, return error
+                    if (error) {
+                        mongoose.disconnect();
+                        return res.json({ error: true, message: "Connection to the Database failed." });
+                    }
+                    //if profile found, delete profile
+                    else {
+                        mongoose.disconnect();
+                        return res.json({ message: "Your profile has been successfully deleted" });
+                };
+            });
+        });
     }
-};
+}
 
 module.exports = ProfileController;
