@@ -5,3 +5,66 @@ html {
 .spacing{
     margin-top: 100;
 }
+
+.calendar { margin-left: -1% }
+
+.cld {
+    height: 50px;
+    width: 13.25%;
+    float: left;
+    margin-left: 1%;
+    left: 1%;
+    margin-bottom: 1%;
+    background: none;
+    border: 0;
+}
+
+.cld>span {
+    margin-right: 15%;
+    margin-top: 15px; 
+    display: inline-block;
+}
+
+.cld-day {    
+    background-color: #F9F8FC;
+    border: 1px solid #EDEDED;
+    text-align: right;
+}
+
+.cld-day:hover {    
+    border-color: #6c757d;
+}
+
+.cld-selected {
+    background-color: #13B955;
+    border: 1px solid #13B955;
+    color:  white;
+}
+
+.cld-selected:hover {
+    border-color: #1b722f;
+}
+
+.read-only>.cld-day:hover {
+    background-color: #F9F8FC !important;
+    border: 1px solid #EDEDED !important;
+    text-align: right !important;
+}
+
+.read-only>.cld-selected:hover {
+    background-color: #13B955 !important;
+    border: 1px solid #13B955 !important;
+    color:  white !important;
+}
+
+.cld-header>* {
+    display: inline-block;
+}
+
+.cld-header>h3 {
+    width: 80%;
+}
+
+.cld-header>button {
+    width: 10%;
+}

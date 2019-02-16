@@ -4,6 +4,8 @@ import { Table, Form, Button, InputGroup } from 'react-bootstrap';
 class ListControl extends React.Component {
     state =
         {
+            error: false,
+            message: null,
             values: []
         }
 
@@ -14,20 +16,31 @@ class ListControl extends React.Component {
 
     add(e) {
         e.preventDefault();
-        console.log(e.target);
+        this.clearError();
+
+        let validate = false;
         let newEntry = {};
+
         for (let i = 0; i < this.props.fields.length; i++) {
-            console.log(e.target[i].value);
-            newEntry[this.props.fields[i]] = e.target[i].value;
+            let currentValue = e.target[i].value.trim();
+            validate = currentValue ? true : validate;
+            newEntry[this.props.fields[i]] = currentValue;
             e.target[i].value = null;
         }
 
-        this.state.values.push(newEntry);
-        this.setState({ values: this.state.values });
+        if (validate) {
+            this.state.values.push(newEntry);
+            this.setState({ values: this.state.values });
+        }
+        else this.setState({ error: true, message: "All fileds empty, please fill at least one." });
+    }
+
+    clearError() {
+        return this.setState({ error: false, message: null });
     }
 
     delete(e) {
-        console.log(e.target.attributes["data-index"].value);
+        this.clearError();
         let index = e.target.attributes["data-index"].value;
         this.state.values.splice(index, 1);
         this.setState({ values: this.state.values });
@@ -60,6 +73,7 @@ class ListControl extends React.Component {
                         <Button variant="primary" type="submit">Add</Button>
                     </InputGroup>
                 </Form>
+                {this.state.error ? (<p className="text-danger">{this.state.message}</p>) : null}
             </div>
         );
     }
