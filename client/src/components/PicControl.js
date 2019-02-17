@@ -1,37 +1,53 @@
 import React from "react";
-import { Table, Form, Button, InputGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import API from "../utils/API";
 
 class PicControl extends React.Component {
     state =
-        {
-            
-        }
+    {
+        selectedPicture: null,
+        defaultPicture: 'placeholder.png'
+    }
 
-    postPicture(e)
-    {}
+    constructor(props)
+    {
+        super(props);
+        this.state.selectedPicture = props.picture;
+    }
 
     handleChange(e)
     {
         e.preventDefault();
-        console.log(e.target);
+        var formData = new FormData();
+        formData.append("test", e.target.files[0]);
+        API.postFile(this.props.location, formData).then(result => {
+            if(result.data.error)
+                this.setState(result.data);
+            else 
+            {
+                console.log(result.data);
+                this.setState({ selectedPicture: result.data.filename });
+            }
+        });
     }
 
     triggerClick(e)
     {
         e.preventDefault();
-        let fileInput = e.target.parentElement.test
+        let fileInput = e.target.parentElement.children[0];
         fileInput.click();
     }
 
     render() 
     {
+        console.log(this.state.selectedPicture);
         return (
             <div>
-                <img src="none" alt='Profile' width={100} height={100} />
-                <Form method="POST" action="api/upload" enctype="multipart/form-data" onSubmit={this.postPicture}>
-                    <Form.Control style={{ visibility: "hidden" }} onChange={this.handleChange} name="test" type="file" placeholder="Name" required />
-                    <Button type="button" onClick={this.triggerClick}>add</Button>
-                </Form>
+                <img id="profilePic" src={this.state.selectedPicture ? `${this.props.location}/uploads/${this.state.selectedPicture}` : `${this.props.location}/uploads/${this.state.defaultPicture}`} alt='Profile' width={250} height={250} />
+                <div id="profilePicButton">
+                    <Form.Control style={{ visibility: "hidden" }} onChange={this.handleChange.bind(this)} name="test" type="file" placeholder="Name" required />
+                    <button className="btn btn-primary" type="button" onClick={this.triggerClick}>+</button>
+                </div>
             </div>
         );
     }

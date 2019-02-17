@@ -4,7 +4,7 @@ import LandingLogo from '../components/LandingLogo';
 import Footer from "../components/Footer";
 // import ListControl from "../components/ListControl";
 // import CalendarControl from "../components/CalendarControl";
-import PicControl from "../components/PicControl";
+// import PicControl from "../components/PicControl";
 
 import api from "../utils/API";
 
@@ -59,11 +59,6 @@ class SignIn extends React.Component {
                                 </Form.Group>
                                 <Button variant="primary" type="submit">Start Muzing!</Button>
                             </Form>
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-md-center">
-                        <Col xs lg="6">
-                            <PicControl />
                         </Col>
                     </Row>
                 </Container>

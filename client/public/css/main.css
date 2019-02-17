@@ -68,3 +68,24 @@ html {
 .cld-header>button {
     width: 10%;
 }
+
+#profilePic {
+    width: 200px;
+    height: 200px;
+}
+
+#profilePicButton {
+    position: relative;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    top: -60px;
+    left: 160px;
+}
+
+#profilePicButton>button {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 1.17rem;
+}

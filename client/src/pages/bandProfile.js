@@ -5,6 +5,7 @@ import ProfileLogo from "../components/ProfileLogo";
 import PhoneNumber from "react-phone-input-2";
 import GenresSelect from "../components/GenresSelect";
 import ListControl from "../components/ListControl";
+import PicControl from "../components/PicControl";
 import CalendarControl from "../components/CalendarControl";
 import api from "../utils/API";
 
@@ -14,7 +15,8 @@ class bandProfile extends React.Component {
         availability: [],
         genres: [],
         contacts: [],
-        members: []
+        members: [],
+        picture: null
     }
 
     SaveButtton(e) {
@@ -52,7 +54,10 @@ class bandProfile extends React.Component {
                 <Form method="post" onSubmit={this.SaveButtton.bind(this)}>
                     <Container>
                         <Row>
-                            <Col lg="6">
+                            <Col lg="3">
+                                <PicControl picture={this.state.picture} location="../" />
+                            </Col>
+                            <Col lg="5">
                                 <Form.Group controlId="name">
                                     <Form.Label>Name</Form.Label>
                                     <Form.Control name="name" type="text" placeholder="Name" required />
@@ -86,7 +91,7 @@ class bandProfile extends React.Component {
                                     <Form.Control name="bio" as="textarea" rows="3" placeholder="Tell us about you" required />
                                 </Form.Group>
                             </Col>
-                            <Col lg="6">
+                            <Col lg="4">
                                 <Form.Group controlId="social-links">
                                     <Form.Label>Social Links:</Form.Label>
                                     <ListControl fields={["Site", "Link"]} values={this.state.socialLinks} />

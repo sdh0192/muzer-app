@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import ProfileLogo from "../components/ProfileLogo";
 import ListControl from "../components/ListControl";
 import CalendarControl from "../components/CalendarControl";
+import PicControl from "../components/PicControl";
 import GenresSelect from "../components/GenresSelect";
 import InstrumentsSelect from "../components/InstrumentsSelect";
 import PhoneNumber from "react-phone-input-2";
@@ -14,7 +15,8 @@ class musicianProfile extends React.Component {
         socialLinks: [],
         availability: [],
         genres: [],
-        instruments: []
+        instruments: [],
+        picture: null
     };
 
     SaveButtton(e) {
@@ -60,7 +62,10 @@ class musicianProfile extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col lg="6">
+                            <Col lg="3">
+                                <PicControl picture={this.state.picture} location="../" />
+                            </Col>
+                            <Col lg="5">
                                 <Form.Group controlId="firstName">
                                     <Form.Label>Frist Name</Form.Label>
                                     <Form.Control name="firstName" type="text" placeholder="First Name" required />
@@ -90,7 +95,7 @@ class musicianProfile extends React.Component {
                                     <Form.Control name="bio" as="textarea" rows="3" placeholder="Tell us about you" required />
                                 </Form.Group>
                             </Col>
-                            <Col lg="6">
+                            <Col lg="4">
                                 <Form.Group controlId="social-links">
                                     <Form.Label>Social Links:</Form.Label>
                                     <ListControl fields={["Site", "Link"]} values={this.state.socialLinks} />
