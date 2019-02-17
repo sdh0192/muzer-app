@@ -82,7 +82,7 @@ const options = [
 ]
 
 let GenresSelect = (props) => (
-    <Dropdown onChange={props.onChange} placeholder='Instrments' fluid multiple selection options={options} />
+    <Dropdown onChange={props.onChange} placeholder='Genres' fluid multiple selection options={options} />
 )
 
 export default GenresSelect;

@@ -8,7 +8,7 @@ const options = [
 ]
 
 const InstrumentsSelect = (props) => (
-    <Dropdown onChange={props.onChange} placeholder='Instrments' fluid multiple selection options={options} />
+    <Dropdown onChange={props.onChange} placeholder='Instruments' fluid multiple selection options={options} />
 )
 
 export default InstrumentsSelect;
