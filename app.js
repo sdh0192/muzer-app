@@ -8,6 +8,7 @@ const passport = require("./validation/passport");
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require("./routes/authRoutes");
+const uploadRouter = require("./routes/uploadRoutes");
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './client/build')));
 
 app.use('/auth', authRouter);
+app.use('/api', uploadRouter);
 app.use('/users', usersRouter);
 app.use('*', indexRouter);
 
