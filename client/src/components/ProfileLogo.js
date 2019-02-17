@@ -1,12 +1,12 @@
 import React from "react";
 import { Row, Col, Navbar } from 'react-bootstrap';
 
-const ProfileLogo = () => (
+const ProfileLogo = (props) => (
     <Row>
         <Col xs lg="12">
             <Navbar>
                 <Navbar.Brand href="#home">
-                    <img src="image/MuzerLogo.jpeg" width="100" alt="App Logo says Muzer" />
+                    <img src={props.logo} width="100" alt="App Logo says Muzer" />
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">

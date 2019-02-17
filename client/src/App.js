@@ -17,9 +17,9 @@ class App extends React.Component {
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/signin" component={SignIn} />
                     <Route exact path="/signup" component={SignUp} />
-                    <Route exact path="/profileLanding" component={profileLanding} />
+                    <Route exact path="/new" component={profileLanding} />
                     <Route exact path="/profile" component={Profile} />
-                    <Route exact path="/musicianProfile" component={musicianProfile}/>
+                    <Route exact path="/new/musician" component={musicianProfile}/>
                 </Switch>
             </Router>
         );

@@ -55,16 +55,16 @@ class ListControl extends React.Component {
         for (let i = 1; i <= this.totalBlocks; i++) {
             let date = new Date(this.state.currentYear, this.state.selectedMonth, i - start);
             if (i <= start) {
-                calendar.push(<div className="cld"></div>);
+                calendar.push(<div key={i} className="cld"></div>);
             }
             else if (this.props.readOnly) {
-                calendar.push(<div className={this.isSelected(date) ? "cld cld-day cld-selected" : "cld cld-day"}>
-                    <span>{i - start}</span>
+                calendar.push(<div key={i} className={this.isSelected(date) ? "cld cld-day cld-selected" : "cld cld-day"}>
+                    <span key={i}>{i - start}</span>
                 </div>);
             }
             else {
-                calendar.push(<button onClick={e => this.dayClickHandler(e, i - start)} className={this.isSelected(date) ? "cld cld-day cld-selected" : "cld cld-day"}>
-                    <span>{i - start}</span>
+                calendar.push(<button key={i} onClick={e => this.dayClickHandler(e, i - start)} className={this.isSelected(date) ? "cld cld-day cld-selected" : "cld cld-day"}>
+                    <span key={i}>{i - start}</span>
                 </button>);
             }
         }

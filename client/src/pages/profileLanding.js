@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import LandingLogo from '../components/LandingLogo';
 import Footer from "../components/Footer";
@@ -8,7 +7,7 @@ const profileLanding = (Props) => (
 
     <div>
         <Container>
-            <LandingLogo />
+            <LandingLogo logo="image/MuzerLogo.jpeg" />
             <Row className="justify-content-md-center">
                 <Col xs lg="6" className="text-center">
                    <Form>
@@ -17,8 +16,7 @@ const profileLanding = (Props) => (
                    <Form.Control as="select">
                        <option>Musician</option>
                        <option>Band</option>
-                       <option>Venue</option>
-                    
+                       <option>Venue</option>                    
                     </Form.Control>
                      </Form.Group>
                    </Form>

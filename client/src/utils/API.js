@@ -10,8 +10,8 @@ export default {
     return axios.post("auth/signup", credentials);
   },
 
-  postmusicianProfile:function() {
-     return axios.post();
+  postProfile:function(profile) {
+     return axios.post("/profile", profile);
   },
 
   // Gets all 

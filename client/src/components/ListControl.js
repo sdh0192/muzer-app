@@ -16,16 +16,17 @@ class ListControl extends React.Component {
 
     add(e) {
         e.preventDefault();
+        let nodes = e.target.parentElement.childNodes;
         this.clearError();
 
         let validate = false;
         let newEntry = {};
 
         for (let i = 0; i < this.props.fields.length; i++) {
-            let currentValue = e.target[i].value.trim();
+            let currentValue = nodes[i].value.trim();
             validate = currentValue ? true : validate;
             newEntry[this.props.fields[i]] = currentValue;
-            e.target[i].value = null;
+            nodes[i].value = null;
         }
 
         if (validate) {
@@ -52,7 +53,7 @@ class ListControl extends React.Component {
                 <Table responsive size="sm">
                     <thead>
                         <tr>
-                            {this.props.fields.map(item => (<th>{item}</th>))}
+                            {this.props.fields.map(item => (<th  key={item}>{item}</th>))}
                             <th></th>
                         </tr>
                     </thead>
@@ -67,12 +68,12 @@ class ListControl extends React.Component {
                         ))}
                     </tbody>
                 </Table>
-                <Form method='POST' onSubmit={this.add.bind(this)}>
+                <div>
                     <InputGroup>
-                        {this.props.fields.map(item => (<Form.Control name={item} type="text" placeholder={item} />))}
-                        <Button variant="primary" type="submit">Add</Button>
+                        {this.props.fields.map(item => (<Form.Control key={item} name={item} type="text" placeholder={item} />))}
+                        <Button onClick={this.add.bind(this)} variant="primary" type="submit">Add</Button>
                     </InputGroup>
-                </Form>
+                </div>
                 {this.state.error ? (<p className="text-danger">{this.state.message}</p>) : null}
             </div>
         );
