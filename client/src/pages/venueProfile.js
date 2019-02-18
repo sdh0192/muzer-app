@@ -1,21 +1,18 @@
 import React from "react";
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, InputGroup } from 'react-bootstrap';
 import Footer from "../components/Footer";
 import ProfileLogo from "../components/ProfileLogo";
 import PhoneNumber from "react-phone-input-2";
-import GenresSelect from "../components/GenresSelect";
 import ListControl from "../components/ListControl";
 import PicControl from "../components/PicControl";
 import CalendarControl from "../components/CalendarControl";
 import API from "../utils/API";
 
-class bandProfile extends React.Component {
+class venueProfile extends React.Component {
     state = {
         socialLinks: [],
         availability: [],
-        genres: [],
         contacts: [],
-        members: [],
         picture: null
     }
 
@@ -45,8 +42,6 @@ class bandProfile extends React.Component {
         // })
     }
 
-    handleGenresChange = (e, data) => this.setState({ genres: data.value });
-
     handlePictureChange = (filename) => this.setState({ picture: filename });
 
     render() {
@@ -64,30 +59,28 @@ class bandProfile extends React.Component {
                                     <Form.Label>Name</Form.Label>
                                     <Form.Control name="name" type="text" placeholder="Name" required />
                                 </Form.Group>
-                                <Form.Group controlId="city">
-                                    <Form.Label>City</Form.Label>
-                                    <Form.Control name="city" type="text" placeholder="City" required />
+                                <Form.Group controlId="address">
+                                    <Form.Label>Address</Form.Label>
+                                    <Form.Control name="address1" type="text" placeholder="Address 1" required />
+                                </Form.Group>
+                                <Form.Group controlId="address">
+                                    <Form.Control name="address2" type="text" placeholder="Address 2" />
+                                </Form.Group>
+                                <Form.Group controlId="address">
+                                    <InputGroup>
+                                        <Form.Control name="city" type="text" placeholder="City" required />                                        
+                                        <Form.Control name="state" type="text" placeholder="State" required />                                                                                
+                                        <Form.Control name="zipCode" type="text" placeholder="Zip Code" required />
+                                    </InputGroup>
                                 </Form.Group>
                                 <Form.Group controlId="phoneNumber">
                                     <Form.Label>Phone Number</Form.Label>
                                     <PhoneNumber containerClass="null" inputClass="form-control" defaultCountry={'us'} inputExtraProps={{ name: 'phoneNumber', required: true }} disableAreaCodes disableCountryCodes disableDropdown />
-                                </Form.Group>
-                                <Form.Group controlId="genres">
-                                    <Form.Label>Genres</Form.Label>
-                                    <GenresSelect onChange={this.handleGenresChange.bind(this)} />
-                                </Form.Group>
-                                <Form.Group controlId="members">
-                                    <Form.Label>Members:</Form.Label>
-                                    <ListControl fields={["Name", "Instrument"]} values={this.state.members} />
                                 </Form.Group>                                
                                 <Form.Group controlId="contacts">
                                     <Form.Label>Contacts:</Form.Label>
                                     <ListControl fields={["Name", "Email", "Phone"]} values={this.state.contacts} />
                                 </Form.Group>
-                                <Form.Group controlId="label">
-                                    <Form.Label>Label</Form.Label>
-                                    <Form.Control name="label" type="text" placeholder="Label" required />
-                                </Form.Group>                                
                                 <Form.Group controlId="bio">
                                     <Form.Label>Bio:</Form.Label>
                                     <Form.Control name="bio" as="textarea" rows="3" placeholder="Tell us about you" required />
@@ -117,4 +110,4 @@ class bandProfile extends React.Component {
     }
 }
 
-export default bandProfile;
+export default venueProfile;

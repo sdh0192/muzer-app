@@ -25,12 +25,13 @@ class musicianProfile extends React.Component {
         console.log(this.state);
 
         let newProfile = {
+            profileType: "musician",
             firstName: e.target.firstName.value,
             lastname: e.target.lastName.value,
             city: e.target.city.value,
             genres: this.state.genres,
             instruments: this.state.instruments,
-            profilePic: null,
+            profilePic: this.state.picture,
             phoneNumber: e.target.phoneNumber.value,
             bio: e.target.bio.value,
             socialLinks: this.state.socialLinks,
@@ -49,6 +50,8 @@ class musicianProfile extends React.Component {
 
     handleInstrumentsChange = (e, data) => this.setState({ instruments: data.value });
 
+    handlePictureChange = (filename) => this.setState({ picture: filename });
+
     render() {
         return (
             <div>
@@ -63,7 +66,7 @@ class musicianProfile extends React.Component {
                         </Row>
                         <Row>
                             <Col lg="3">
-                                <PicControl picture={this.state.picture} location="../" />
+                                <PicControl onChange={this.handlePictureChange.bind(this)} picture={this.state.picture} location="../" />
                             </Col>
                             <Col lg="5">
                                 <Form.Group controlId="firstName">

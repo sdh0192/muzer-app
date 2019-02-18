@@ -25,8 +25,8 @@ class PicControl extends React.Component {
                 this.setState(result.data);
             else 
             {
-                console.log(result.data);
                 this.setState({ selectedPicture: result.data.filename });
+                if(this.props.onChange) this.props.onChange(result.data.filename);
             }
         });
     }
@@ -40,7 +40,6 @@ class PicControl extends React.Component {
 
     render() 
     {
-        console.log(this.state.selectedPicture);
         return (
             <div>
                 <img id="profilePic" src={this.state.selectedPicture ? `${this.props.location}/uploads/${this.state.selectedPicture}` : `${this.props.location}/uploads/${this.state.defaultPicture}`} alt='Profile' width={250} height={250} />

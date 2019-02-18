@@ -60,8 +60,8 @@ class ListControl extends React.Component {
                     <tbody>
                         {this.state.values.map((item, i) => (
                             <tr key={i}>
-                                {this.props.fields.map(field => (
-                                    <td>{item[field]}</td>
+                                {this.props.fields.map((field, y) => (
+                                    <td key={`${i}${y}`} >{item[field]}</td>
                                 ))}
                                 <td><Button size="sm" variant="outline-danger" data-index={i} onClick={this.delete.bind(this)}>-</Button></td>
                             </tr>

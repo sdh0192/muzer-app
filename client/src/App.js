@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/Signup";
 import MusicianProfile from './pages/musicianProfile';
 import BandProfile from './pages/bandProfile';
+import VenueProfile from './pages/venueProfile';
 
 
 class App extends React.Component {
@@ -20,7 +21,8 @@ class App extends React.Component {
                     <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/new" component={profileLanding} />
                     <Route exact path="/new/musician" component={MusicianProfile}/>                    
-                    <Route exact path="/new/band" component={BandProfile}/>
+                    <Route exact path="/new/band" component={BandProfile}/>                    
+                    <Route exact path="/new/venue" component={VenueProfile}/>
                     <Route exact path="/profile" component={Profile} />
                 </Switch>
             </Router>
