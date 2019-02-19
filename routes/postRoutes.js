@@ -4,11 +4,12 @@ const PostController = require("../controllers/PostController");
 const Authenticate = require("../validation/ensureAuthenticated");
 
 //route to get a post
-router.get("/post", Authenticate, PostController.getProfile);
+router.get("/post", Authenticate, PostController.getPost);
 
 //route to make/save a new post
-router.post("/post", Authenticate, PostController.postProfile);
+router.post("/post", Authenticate, PostController.makePost);
 
 //route to delete a post
-router.delete("/post", Authenticate, PostController.deleteProfile);
+router.delete("/post", Authenticate, PostController.deletePost);
 
+module.exports = router;

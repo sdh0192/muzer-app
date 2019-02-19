@@ -29,10 +29,10 @@ class bandProfile extends React.Component {
             labelName: null
         }
 
-        if(e.target.label.trim())
+        if(e.target.label.value.trim())
         {
             label.unsigned = false;
-            label.labelName = e.target.label.trim();
+            label.labelName = e.target.label.value.trim();
         }
 
         let newProfile = {
@@ -99,7 +99,7 @@ class bandProfile extends React.Component {
                                 </Form.Group>
                                 <Form.Group controlId="label">
                                     <Form.Label>Label</Form.Label>
-                                    <Form.Control name="label" type="text" placeholder="Label" required />
+                                    <Form.Control name="label" type="text" placeholder="Label" />
                                 </Form.Group>                                
                                 <Form.Group controlId="bio">
                                     <Form.Label>Bio:</Form.Label>
