@@ -10,6 +10,7 @@ const usersRouter = require('./routes/users');
 const authRouter = require("./routes/authRoutes");
 const uploadRouter = require("./routes/uploadRoutes");
 const profileRouter = require("./routes/profileRoutes");
+const postRouter = require("./routes/postRoutes");
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, './client/build')));
 app.use('/auth', authRouter);
 app.use('/api', uploadRouter);
 app.use('/api', profileRouter);
+app.use('/post', postRouter);
 app.use('/users', usersRouter);
 app.use('*', indexRouter);
 
