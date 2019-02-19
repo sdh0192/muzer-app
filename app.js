@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, './client/build')));
 app.use('/auth', authRouter);
 app.use('/api', uploadRouter);
 app.use('/api', profileRouter);
-app.use('/post', postRouter);
+app.use('/api', postRouter);
 app.use('/users', usersRouter);
 app.use('*', indexRouter);
 
