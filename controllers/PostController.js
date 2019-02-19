@@ -11,17 +11,9 @@ const PostController = {
                 return res.json({ error: true, message: "Connection to the Database failed." });
             //db query to create and save new post    
             newPost.save()
-                // if error, return error
-                .then((error, post) => {
-                    if (error) {
-                        mongoose.disconnect();
-                        return res.json({ error: true, message: "Connection to the Database failed." });
-                    }
-                    //if post found, return post
-                    else if (post) {
+                .then((post) => {
                         mongoose.disconnect();
                         return res.json(post);
-                    }
                 });
         });
     },
