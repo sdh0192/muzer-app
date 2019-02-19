@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require("./routes/authRoutes");
 const uploadRouter = require("./routes/uploadRoutes");
+const profileRouter = require("./routes/profileRoutes");
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, './client/build')));
 
 app.use('/auth', authRouter);
 app.use('/api', uploadRouter);
+app.use('/api', profileRouter);
 app.use('/users', usersRouter);
 app.use('*', indexRouter);
 

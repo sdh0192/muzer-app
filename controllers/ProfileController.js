@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 var db = require("../models");
-var MONGODB_URI =
-    process.env.MONGODB_URI || "mongodb://localhost:27017/webScraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/webScraper";
 
 const ProfileController = {
     // will search for the profile
@@ -28,17 +27,19 @@ const ProfileController = {
     },
 
     postProfile: function (req, res) {
+
         let newProfile = null;
         //find which type of profile it is, then run the function accordingly to return the new constructor
         if (req.body.profileType === "musician") {
-            newProfile = this.createMusician();
+            newProfile = ProfileController.createMusician(req.body);
         } else if (req.body.profileType === "band") {
-            newProfile = this.createBand();
+            newProfile = ProfileController.createBand(req.body);
         } else if (req.body.profileType === "venue") {
-            newProfile = this.createVenue();
+            newProfile = ProfileController.createVenue(req.body);
         } else {
             return res.json({ error: true, message: "profile type not selected" })
         }
+
         // save new profile constructor object to the database
         mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, error => {
             if (error)
@@ -46,16 +47,12 @@ const ProfileController = {
             // db query to get profile
             newProfile.save()
                 // if error, return error
-                .then((error, profile) => {
-                    if (error) {
-                        mongoose.disconnect();
-                        return res.json({ error: true, message: "Connection to the Database failed." });
-                    }
-                    //if profile found, return profile
-                    else if (profile) {
+                .then((profile) => {
+                    req.user.profile = profile._id;
+                    req.user.save().then(account => {
                         mongoose.disconnect();
                         return res.json(profile);
-                    }
+                    });
                 });
         });
 

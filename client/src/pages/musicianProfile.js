@@ -43,7 +43,7 @@ class musicianProfile extends React.Component {
                 this.setState(response.data);
             }
             else { window.location.replace("/home") }
-        })
+        });
     }
 
     handleGenresChange = (e, data) => this.setState({ genres: data.value });

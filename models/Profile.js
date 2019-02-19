@@ -5,7 +5,7 @@ const ProfileSchema = new Schema({
     
     profilePic: { type: String, required: true },
 
-    phoneNumber: { type: Number, required: true },
+    phoneNumber: { type: String, required: true },
 
     bio: { type: String, required: true },
 

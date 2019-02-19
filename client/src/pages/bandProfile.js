@@ -24,25 +24,38 @@ class bandProfile extends React.Component {
         console.log(e.target);
         console.log(this.state);
 
-        // let newProfile = {
-        //     firstName: e.target.firstName.value,
-        //     lastname: e.target.lastName.value,
-        //     city: e.target.city.value,
-        //     genres: this.state.genres,
-        //     instruments: this.state.instruments,
-        //     profilePic: null,
-        //     phoneNumber: e.target.phoneNumber.value,
-        //     bio: e.target.bio.value,
-        //     socialLinks: this.state.socialLinks,
-        //     availability: this.state.availability
-        // }
+        let label = {
+            unsigned: true,
+            labelName: null
+        }
 
-        // API.postProfile(newProfile).then(response => {
-        //     if (response.data.error) {
-        //         this.setState(response.data);
-        //     }
-        //     else { window.location.replace("/home") }
-        // })
+        if(e.target.label.trim())
+        {
+            label.unsigned = false;
+            label.labelName = e.target.label.trim();
+        }
+
+        let newProfile = {
+            profileType: "band",
+            name: e.target.name.value,
+            city: e.target.city.value,
+            genres: this.state.genres,
+            members: this.state.members,
+            contacts: this.state.contacts,
+            label: label,
+            profilePic: this.state.picture,
+            phoneNumber: e.target.phoneNumber.value,
+            bio: e.target.bio.value,
+            socialLinks: this.state.socialLinks,
+            availability: this.state.availability
+        }
+
+        API.postProfile(newProfile).then(response => {
+            if (response.data.error) {
+                this.setState(response.data);
+            }
+            else { window.location.replace("/home") }
+        });
     }
 
     handleGenresChange = (e, data) => this.setState({ genres: data.value });

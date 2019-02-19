@@ -21,25 +21,30 @@ class venueProfile extends React.Component {
         console.log(e.target);
         console.log(this.state);
 
-        // let newProfile = {
-        //     firstName: e.target.firstName.value,
-        //     lastname: e.target.lastName.value,
-        //     city: e.target.city.value,
-        //     genres: this.state.genres,
-        //     instruments: this.state.instruments,
-        //     profilePic: null,
-        //     phoneNumber: e.target.phoneNumber.value,
-        //     bio: e.target.bio.value,
-        //     socialLinks: this.state.socialLinks,
-        //     availability: this.state.availability
-        // }
+        let newProfile = {
+            profileType: "venue",
+            name: e.target.name.value,
+            address: {
+                address1: e.target.address1.value,
+                address2: e.target.address2.value,
+                city: e.target.city.value,
+                state: e.target.state.value,
+                zipCode: e.target.zipCode.value,
+            },
+            contacts: this.state.contacts,
+            profilePic: this.state.picture,
+            phoneNumber: e.target.phoneNumber.value,
+            bio: e.target.bio.value,
+            socialLinks: this.state.socialLinks,
+            availability: this.state.availability
+        }
 
-        // API.postProfile(newProfile).then(response => {
-        //     if (response.data.error) {
-        //         this.setState(response.data);
-        //     }
-        //     else { window.location.replace("/home") }
-        // })
+        API.postProfile(newProfile).then(response => {
+            if (response.data.error) {
+                this.setState(response.data);
+            }
+            else { window.location.replace("/home") }
+        });
     }
 
     handlePictureChange = (filename) => this.setState({ picture: filename });

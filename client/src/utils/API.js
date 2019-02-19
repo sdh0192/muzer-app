@@ -11,7 +11,8 @@ export default {
 	},
 
 	postProfile: function (profile) {
-		return axios.post("../profile", profile);
+		console.log("axios");
+		return axios.post("../api/profile", profile);
 	},
 
 	postFile: function (location, file) {
