@@ -7,5 +7,6 @@ module.exports = {
     Profile: require('./Profile'),
     Musician: require('./Musician'),
     Band: require('./Band'),
-    Venue: require('./Venue')
+    Venue: require('./Venue'),
+    Post: require('./Post')
 };
