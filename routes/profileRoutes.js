@@ -13,3 +13,4 @@ router.update("/profile/avail", ProfileController.updateAvail);
 
 //route to delete a profile
 router.delete("/profile", ProfileController.deleteProfile);
+
