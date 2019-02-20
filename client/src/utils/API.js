@@ -23,6 +23,16 @@ export default {
 		});
 	},
 
+	autenticate: async function()
+	{
+		let response = await axios.get('api/user');
+		console.log(response);
+		if (!response.data) window.location.replace('/signin');
+		else if(!response.data.profile) window.location.replace('/new');
+
+		return true;
+	},
+
 	// Gets all 
 	get: function () {
 		return axios.get("/api/");
