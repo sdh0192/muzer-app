@@ -1,5 +1,10 @@
 html {
-    font-size: 12pt
+    font-size: 12pt;
+    font-family: 'Laila', serif;
+}
+
+button, input, optgroup, select, textarea, h1, h2, h3, h4, h5 {
+    font-family: 'Laila', serif !important;
 }
 
 .spacing{
