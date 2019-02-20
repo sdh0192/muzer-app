@@ -36,6 +36,7 @@ app.use('/auth', authRouter);
 app.use('/api', uploadRouter);
 app.use('/api', profileRouter);
 app.use('/api', postRouter);
+app.get('/api/user', (req, res) => res.json(req.user));
 app.use('/users', usersRouter);
 app.use('*', indexRouter);
 
