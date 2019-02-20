@@ -14,7 +14,7 @@ class Profile extends React.Component {
         return(
         <div>
             <div>
-            <img src="image/MuzerLogo.jpeg" alt="App Logo says Muzer"/>
+            <img src="image/MuzerLogo.png" alt="App Logo says Muzer"/>
             </div>
 
 

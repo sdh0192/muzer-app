@@ -1,5 +1,6 @@
 html {
     font-size: 12pt
+   
 }
 
 .spacing{
@@ -88,4 +89,8 @@ html {
     width: 50px;
     border-radius: 50%;
     font-size: 1.17rem;
+}
+
+.postfeed {
+    border-bottom: #6c757d solid;
 }

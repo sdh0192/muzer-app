@@ -55,7 +55,7 @@ class musicianProfile extends React.Component {
     render() {
         return (
             <div>
-                <ProfileLogo logo="../image/MuzerLogo.jpeg" />
+                <ProfileLogo logo="../image/MuzerLogo.png" />
                 {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
                 <Form method="post" onSubmit={this.SaveButtton.bind(this)} className="MusicianProfile">
                     <Container>
@@ -116,7 +116,7 @@ class musicianProfile extends React.Component {
                         </Row>
                     </Container>
                 </Form>
-                <Footer />
+                <Footer className="fixed-bottom"/>
             </div>
         );
     }

@@ -13,7 +13,7 @@ const profileLanding = (Props) => (
 
     <div>
         <Container>
-            <LandingLogo logo="image/MuzerLogo.jpeg" />
+            <LandingLogo logo="image/MuzerLogo.png" />
             <Form onSubmit={choose}>
                 <Row className="justify-content-md-center">
                     <Col xs lg="6" className="text-center">
@@ -34,7 +34,7 @@ const profileLanding = (Props) => (
                 </Row>
             </Form>
         </Container>
-        <Footer />
+        <Footer className="fixed-bottom" />
     </div>
 );
         

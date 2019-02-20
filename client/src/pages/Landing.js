@@ -9,7 +9,7 @@ const Landing = (props) => (
     <div>
         <Container>
             <LandingLogo />
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-md-center" >
                 <Col xs lg="6" className="text-center">
                     <Button variant="primary" href="/signup" size="lg">Sign Up</Button>
                     <span> or </span>
@@ -27,7 +27,7 @@ const Landing = (props) => (
                 </Col>
             </Row>
         </Container>
-        <Footer />
+        <Footer className="fixed-bottom"/>
     </div>
 );
 

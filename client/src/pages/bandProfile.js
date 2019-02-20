@@ -65,7 +65,7 @@ class bandProfile extends React.Component {
     render() {
         return(
             <div>
-                <ProfileLogo logo="../image/MuzerLogo.jpeg" />
+                <ProfileLogo logo="../image/MuzerLogo.png" />
                 <Form method="post" onSubmit={this.SaveButtton.bind(this)}>
                     <Container>
                         <Row>

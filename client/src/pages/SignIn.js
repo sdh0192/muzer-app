@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 // import ListControl from "../components/ListControl";
 // import CalendarControl from "../components/CalendarControl";
 // import PicControl from "../components/PicControl";
-import NewsFeedNav from "../components/NewsFeedNav";
+//import NewsFeedNav from "../components/NewsFeedNav";
 
 import api from "../utils/API";
 
@@ -63,8 +63,7 @@ class SignIn extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <NewsFeedNav />
-                <Footer />
+                <Footer className="fixed-bottom" />
             </div>
         );
     }
