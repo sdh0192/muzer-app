@@ -37,6 +37,10 @@ export default {
 	getTopPosts: function () {
 		return axios.get("api/post");
 	},
+ 
+	postPost: function (post) {
+		return axios.post("api/post", post);
+	},
 
 	// // Gets with the given id
 	// getapp: function (id) {
