@@ -7,7 +7,7 @@ const NewsFeedNav = (prop) => (
             <Navbar.Brand href="#home">
                 <img
                     src="image/MuzerLogo.png"
-                    height="30"
+                    height="45"
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
                 />
