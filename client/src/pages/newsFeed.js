@@ -1,14 +1,17 @@
 import React from "react";
-import { Container, Row, Col, Form, Button, InputGroup } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, InputGroup, Alert } from 'react-bootstrap';
 import Footer from "../components/Footer";
 import NewsFeedNav from "../components/NewsFeedNav";
+import Post from "../components/Post";
 import API from "../utils/API";
 
 class newsFeed extends React.Component {
 
     state = {
         recent: [],
-        currentUser: null
+        currentUser: null,
+        error: false,
+        message: null
     }
 
     constructor(props)
@@ -18,9 +21,31 @@ class newsFeed extends React.Component {
         
         API.getTopPosts().then(Response => {
                 
-                if(!Response.data.error) this.state.recent = Response.data;
+                if(!Response.data.error) this.setState({ recent: Response.data });
                 console.log(this.state);
             });
+    }
+
+    post = (e) => {
+        e.preventDefault();
+        console.log(e.target.newPost.value);
+        let post = e.target.newPost.value.trim();
+
+        if(post)
+        {
+            let newPost = {
+                content: post
+            }
+
+            API.postPost(newPost).then(response => {
+                console.log(response.data);
+                this.state.recent.push(response.data);
+            })
+        }
+        else
+        {
+            this.setState({ error: true, message: "Please fill the the post content." });
+        }
     }
 
     render() {
@@ -31,9 +56,10 @@ class newsFeed extends React.Component {
                 <Container>
                     <Row className="justify-content-md-center">
                         <Col lg="9">
-                            <Form>
+                            {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
+                            <Form onSubmit={this.post.bind(this)}>
                                 <InputGroup controlId="bio">
-                                    <Form.Control name="bio" as="textarea" rows="2" placeholder="Create a post" required />
+                                    <Form.Control name="newPost" as="textarea" rows="2" placeholder="Create a post" />
                                     <Button variant="primary" type="submit">Post</Button>
                                 </InputGroup>
                             </Form>                            
@@ -46,7 +72,7 @@ class newsFeed extends React.Component {
                     </Row>  
                     <Row  className="justify-content-md-center">
                         <Col lg="9">
-                            
+                            {this.state.recent.map(item => <Post key={item.id} title={item.name} value={item.postContent} />)}
                         </Col>
                     </Row>      
 

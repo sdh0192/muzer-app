@@ -9,7 +9,13 @@ const PostController = {
         mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, error => {
             if (error)
                 return res.json({ error: true, message: "Connection to the Database failed." });
-            //db query to create and save new post    
+            //db query to create and save new post  
+            newPost = new db.Post({
+                profile: req.user._id,
+                name: req.user.email,
+                postContent: req.body.content
+            });  
+
             newPost.save()
                 .then((post) => {
                         mongoose.disconnect();
@@ -24,7 +30,7 @@ const PostController = {
             if (error)
                 return res.json({ error: true, message: "Connection to the Database failed." });
             // db query to get post
-            db.Post.find().limit(15)
+            db.Post.find().limit(15).populate('profile')
                 // if error, return error
                 .exec((error, posts) => {
                     if (error) {
