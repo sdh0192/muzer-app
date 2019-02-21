@@ -23,7 +23,7 @@ const NewsFeedNav = (prop) => (
 
             <Navbar.Collapse className="justify-content-end">
             <Navbar.Text variant="outline-primary">
-                Mark Otto | <a href="/logout">Logout</a>
+               User | <a href="/">Logout</a>
             </Navbar.Text>
         </Navbar.Collapse>
     </Navbar>
