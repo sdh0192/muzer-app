@@ -56,9 +56,10 @@ class newsFeed extends React.Component {
                 <Container>
                     <Row className="justify-content-md-center">
                         <Col lg="9">
+                            <h1 className="text-center">Create A Post</h1>
                             {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
                             <Form onSubmit={this.post.bind(this)}>
-                                <InputGroup controlId="bio">
+                                <InputGroup controlid="bio">
                                     <Form.Control name="newPost" as="textarea" rows="2" placeholder="Create a post" />
                                     <Button variant="primary" type="submit">Post</Button>
                                 </InputGroup>
@@ -66,8 +67,8 @@ class newsFeed extends React.Component {
                         </Col>
                     </Row>
                     <Row  className="justify-content-md-center">
-                        <Col lg="9">
-                           <h1 className="mt-4">Recent</h1>
+                        <Col lg="9" className="postfeed">
+                           <h1 className="mt-4">Your Recent Post</h1>
                         </Col>
                     </Row>  
                     <Row  className="justify-content-md-center">
