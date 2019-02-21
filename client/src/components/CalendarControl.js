@@ -109,7 +109,7 @@ class ListControl extends React.Component {
                     <span>Mo</span>
                 </div>
                 <div className="cld text-center">
-                    <span>Te</span>
+                    <span>Tu</span>
                 </div>
                 <div className="cld text-center">
                     <span>We</span>

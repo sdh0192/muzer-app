@@ -70,7 +70,7 @@ class musicianProfile extends React.Component {
                             </Col>
                             <Col lg="5">
                                 <Form.Group controlId="firstName">
-                                    <Form.Label>Frist Name</Form.Label>
+                                    <Form.Label>First Name</Form.Label>
                                     <Form.Control name="firstName" type="text" placeholder="First Name" required />
                                 </Form.Group>
                                 <Form.Group controlId="lastName">
