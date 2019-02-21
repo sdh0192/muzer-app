@@ -14,7 +14,7 @@ class newsFeed extends React.Component {
     constructor(props)
     {
         super(props);
-        this.currentUser = API.autenticate();
+        API.autenticate();
         
         API.getTopPosts().then(Response => {
                 
