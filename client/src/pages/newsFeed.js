@@ -1,28 +1,47 @@
 import React from "react";
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, InputGroup } from 'react-bootstrap';
 import Footer from "../components/Footer";
 import NewsFeedNav from "../components/NewsFeedNav";
+import API from "../utils/API";
 
 class newsFeed extends React.Component {
-    render(){
+
+    state = {
+        recent: [],
+        currentUser: null
+    }
+
+    constructor(props)
+    {
+        super(props);
+        this.currentUser = API.autenticate();
+        
+        API.getTopPosts().then(Response => {
+                
+                if(!Response.data.error) this.state.recent = Response.data;
+                console.log(this.state);
+            });
+    }
+
+    render() {
+        //console.log(this.state)
         return(
             <div>
                 <NewsFeedNav />
                 <Container>
                     <Row className="justify-content-md-center">
-                        <Col lg="9" className="postfeed">
-                            <h1 className="text-center"><strong>CREATE A POST</strong></h1>
-
-                            <Form.Group controlId="bio">
-                                    <Form.Label>Name</Form.Label>
-                                    <Form.Control name="bio" as="textarea" rows="3" placeholder="Post something" required />
+                        <Col lg="9">
+                            <Form>
+                                <InputGroup controlId="bio">
+                                    <Form.Control name="bio" as="textarea" rows="2" placeholder="Create a post" required />
                                     <Button variant="primary" type="submit">Post</Button>
-                            </Form.Group>
+                                </InputGroup>
+                            </Form>                            
                         </Col>
                     </Row>
-                    <Row className="justify-content-md-center">
-                        <Col lg="9" className="postfeed">
-                           <h1 className="text-center"><strong>RECENT POST</strong></h1>
+                    <Row  className="justify-content-md-center">
+                        <Col lg="9">
+                           <h1 className="mt-4">Recent</h1>
                         </Col>
                     </Row>  
                     <Row  className="justify-content-md-center">

@@ -24,17 +24,17 @@ const PostController = {
             if (error)
                 return res.json({ error: true, message: "Connection to the Database failed." });
             // db query to get post
-            db.Post.findOne()
+            db.Post.find().limit(15)
                 // if error, return error
-                .exec((error, post) => {
+                .exec((error, posts) => {
                     if (error) {
                         mongoose.disconnect();
                         return res.json({ error: true, message: "Connection to the Database failed." });
                     }
                     //if post found, return post
-                    else if (post) {
+                    else if (posts) {
                         mongoose.disconnect();
-                        return res.json(post);
+                        return res.json(posts);
                     }
                 });
         });

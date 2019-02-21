@@ -43,7 +43,7 @@ class venueProfile extends React.Component {
             if (response.data.error) {
                 this.setState(response.data);
             }
-            else { window.location.replace("/home") }
+            else { window.location.replace("/feeds") }
         });
     }
 

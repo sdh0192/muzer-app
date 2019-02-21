@@ -30,23 +30,24 @@ export default {
 		if (!response.data) window.location.replace('/signin');
 		else if(!response.data.profile) window.location.replace('/new');
 
-		return true;
+		return response.data;
 	},
 
 	// Gets all 
-	get: function () {
-		return axios.get("/api/");
+	getTopPosts: function () {
+		return axios.get("api/post");
 	},
-	// Gets with the given id
-	getapp: function (id) {
-		return axios.get("/api/ /" + id);
-	},
-	// Deletes with the given id
-	deleteapp: function (id) {
-		return axios.delete("/api/ /" + id);
-	},
-	// Saves to the database
-	save: function () {
-		return axios.post("/api/");
-	}
+
+	// // Gets with the given id
+	// getapp: function (id) {
+	// 	return axios.get("/api/ /" + id);
+	// },
+	// // Deletes with the given id
+	// deleteapp: function (id) {
+	// 	return axios.delete("/api/ /" + id);
+	// },
+	// // Saves to the database
+	// save: function () {
+	// 	return axios.post("/api/");
+	// }
 };

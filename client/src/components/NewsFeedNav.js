@@ -1,25 +1,32 @@
 import React from "react";
-import { Row, Col, Navbar, Form, Button, FormControl } from 'react-bootstrap';
+import { Navbar, Form, Button, FormControl, InputGroup } from 'react-bootstrap';
 
 const NewsFeedNav = (prop) => (
-    <Row>
-        <Col xs lg="12">
-            <Navbar bg="light" variant="light">
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-              
-                <Form inline className="justify-content-md-center">
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-primary">Search</Button>
-                </Form>
+    <Navbar bg="light" variant="light" style={{ marginBottom: 100 }}>
+        <Navbar.Collapse>
+            <Navbar.Brand href="#home">
+                <img
+                    src="image/MuzerLogo.png"
+                    height="30"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                />
+            </Navbar.Brand>
+        </Navbar.Collapse>
+        
+        <Form inline>
+            <InputGroup>
+                <FormControl type="text" placeholder="Search" style={{ width: 250 }} />
+                <Button variant="outline-primary">Search</Button>
+            </InputGroup>                    
+        </Form>
 
-                 <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text variant="outline-primary">
-                        Signed in as: <a href="#login">Mark Otto</a>
-                    </Navbar.Text>
-                </Navbar.Collapse>
-            </Navbar>
-        </Col>
-    </Row>
+            <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text variant="outline-primary">
+                Mark Otto | <a href="/logout">Logout</a>
+            </Navbar.Text>
+        </Navbar.Collapse>
+    </Navbar>
 );
 
 export default NewsFeedNav;

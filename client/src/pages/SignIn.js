@@ -37,7 +37,7 @@ class SignIn extends React.Component {
             if (response.data.error) {
                 this.setState(response.data);
             }
-            else { window.location.replace("/home") }
+            else { window.location.replace("/feeds") }
         });
     }
 
@@ -58,7 +58,7 @@ class SignIn extends React.Component {
                                     <Form.Label>Password</Form.Label>
                                     <Form.Control name="password" type="password" placeholder="Password" required />
                                 </Form.Group>
-                                <Button variant="primary" type="submit">Start Muzing!</Button>
+                                <Button variant="primary" type="submit">Signin</Button>
                             </Form>
                         </Col>
                     </Row>

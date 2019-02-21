@@ -23,7 +23,7 @@ const Landing = (props) => (
                 <Col xs="12" className="text-center">
                     <Button variant="outline-primary" href="/signin">Sign In</Button>
                     <span> or </span>
-                    <Link to="/home">continue as guest</Link>
+                    <Link to="/feeds">continue as guest</Link>
                 </Col>
             </Row>
         </Container>
