@@ -68,7 +68,7 @@ class newsFeed extends React.Component {
                     </Row>
                     <Row  className="justify-content-md-center">
                         <Col lg="9" className="postfeed">
-                           <h1 className="mt-4">Your Recent Post</h1>
+                           <h1 className="mt-4">Recent Posts</h1>
                         </Col>
                     </Row>  
                     <Row  className="justify-content-md-center">
