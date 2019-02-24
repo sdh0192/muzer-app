@@ -17,7 +17,7 @@ const AuthController = {
     googleLogin: passport.authenticate("google", { scope: ["profile", "email"] }),
 
     googleCallback:  passport.authenticate('google', { 
-        successRedirect: '/profile',
+        successRedirect: '/feeds',
         failureRedirect: '/auth/login'
     }),
 

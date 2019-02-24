@@ -16,7 +16,7 @@ export default {
 	},
 
 	postFile: function (location, file) {
-		return axios.post(`${location}/api/upload`, file, {
+		return axios.post(`${location}api/upload`, file, {
 			headers: {
 				'Content-Type': 'multipart/form-data'
 			}

@@ -66,7 +66,7 @@ class musicianProfile extends React.Component {
                         </Row>
                         <Row>
                             <Col lg="3">
-                                <PicControl onChange={this.handlePictureChange.bind(this)} picture={this.state.picture} location="../" />
+                                <PicControl onChange={this.handlePictureChange.bind(this)} picture={this.state.picture} location="../../" />
                             </Col>
                             <Col lg="5">
                                 <Form.Group controlId="firstName">

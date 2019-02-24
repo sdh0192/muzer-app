@@ -42,7 +42,7 @@ class PicControl extends React.Component {
     {
         return (
             <div>
-                <img id="profilePic" src={this.state.selectedPicture ? `${this.props.location}/uploads/${this.state.selectedPicture}` : `${this.props.location}/uploads/${this.state.defaultPicture}`} alt='Profile' width={250} height={250} />
+                <img id="profilePic" src={this.state.selectedPicture ? `${this.props.location}uploads/${this.state.selectedPicture}` : `${this.props.location}uploads/${this.state.defaultPicture}`} alt='Profile' width={250} height={250} />
                 <div id="profilePicButton">
                     <Form.Control style={{ visibility: "hidden" }} onChange={this.handleChange.bind(this)} name="test" type="file" placeholder="Name" required />
                     <button className="btn btn-primary" type="button" onClick={this.triggerClick}>+</button>
