@@ -7,7 +7,7 @@ const NewsFeedNav = (prop) => (
             <Navbar.Brand href="#home">
                 <img
                     src="image/MuzerLogo.png"
-                    height="30"
+                    height="45"
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
                 />
@@ -23,7 +23,7 @@ const NewsFeedNav = (prop) => (
 
             <Navbar.Collapse className="justify-content-end">
             <Navbar.Text variant="outline-primary">
-                Mark Otto | <a href="/logout">Logout</a>
+               User | <a href="/">Logout</a>
             </Navbar.Text>
         </Navbar.Collapse>
     </Navbar>
