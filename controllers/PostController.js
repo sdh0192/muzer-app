@@ -11,15 +11,15 @@ const PostController = {
                 return res.json({ error: true, message: "Connection to the Database failed." });
             //db query to create and save new post  
             newPost = new db.Post({
-                profile: req.user._id,
-                name: req.user.email,
+                profile: req.user.profile.id,
+                name: req.user.profile.name,
                 postContent: req.body.content
-            });  
+            });
 
             newPost.save()
                 .then((post) => {
-                        mongoose.disconnect();
-                        return res.json(post);
+                    mongoose.disconnect();
+                    return res.json(post);
                 });
         });
     },

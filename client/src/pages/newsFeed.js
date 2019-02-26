@@ -17,7 +17,7 @@ class newsFeed extends React.Component {
     constructor(props)
     {
         super(props);
-        API.autenticate();
+        // API.autenticate();
         
         API.getTopPosts().then(Response => {
                 
@@ -36,10 +36,13 @@ class newsFeed extends React.Component {
             let newPost = {
                 content: post
             }
+            
+            e.target.newPost.value = null;
 
             API.postPost(newPost).then(response => {
                 console.log(response.data);
-                this.state.recent.push(response.data);
+                this.state.recent.unshift(response.data);
+                this.setState({ recent: this.state.recent });
             })
         }
         else

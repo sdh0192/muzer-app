@@ -15,5 +15,9 @@ const MusicianProfileSchema = new Schema({
     instruments: [{ type: String, require: true }]
 });
 
+MusicianProfileSchema.virtual('name').get(function () {
+    return `${this.firstName} ${this.lastName}`;
+});
+
 let Musician = ProfileSchema.discriminator("Musician", MusicianProfileSchema);
 module.exports = Musician;
