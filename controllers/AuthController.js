@@ -65,14 +65,14 @@ const AuthController = {
                             return returnJsonError(res, 'An user already register using this email account.');
                         }
 
-                        AuthController.createLocalAccount(res, req.body.email, req.body.password)
+                        AuthController.createLocalAccount(req, res, req.body.email, req.body.password)
                     });
             });
         }
         else returnJsonError(res, 'Validation failed.');
     },
 
-    createLocalAccount: function(res, email, password)
+    createLocalAccount: function(req, res, email, password)
     {
         let newAccount = new db.Account({ 
             email: email,
@@ -88,8 +88,11 @@ const AuthController = {
             }
             else
             {
-                mongoose.disconnect();
-                res.json(account);
+                req.logIn(account, function(err) 
+                {
+                    mongoose.disconnect();
+                    res.json(account);
+                });                
             }						
         });
     },
