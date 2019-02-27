@@ -61,10 +61,45 @@ const PostController = {
                     //if post found, delete post
                     else {
                         mongoose.disconnect();
-                        return res.json({ message: "Your post has been successfully deleted" });
+                        return res.json({ error: true, message: "Your post has been successfully deleted" });
                     };
                 });
         });
+    },
+
+    postComment: function (req, res) {
+
+        postId = req.query.id;
+
+        if (postId) {
+            mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, error => {
+                if (error)
+                    return res.json({ error: true, message: "Connection to the Database failed." });
+
+                db.Post.findById(postId).exec((error, post) => {
+                    if (error) {
+                        mongoose.disconnect();
+                        return res.json({ error: true, message: "Connection to the Database failed." });
+                    }
+                    //if post found, return post
+                    else if (post) {
+
+                        let newComment = {
+                            content: req.body.content,
+                            name: req.user.name,
+                            profile: req.user.profile._id
+                        }
+
+                        post.comments.push(newComment);
+                        post.save().then(() => {
+                            mongoose.disconnect();
+                            return res.json(newComment);
+                        });
+                    }
+                })
+            });
+        }
+        else return res.json({ error: true, message: "Invalid Post ID" });
     }
 }
 
