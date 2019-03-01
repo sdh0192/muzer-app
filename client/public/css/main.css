@@ -94,3 +94,7 @@ html {
 .postfeed {
     border-bottom: #6c757d solid;
 }
+
+.postSpacing {
+    margin-top: 10px;
+}
