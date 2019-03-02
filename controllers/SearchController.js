@@ -4,7 +4,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/webScrap
 
 const SearchController = {
     
-    getGenreSearch: function(req, res) {
+    getSearchResults: function(req, res) {
         //open db connection
         mongoose.connect(MONGODB_URI, { useNewUrlParser: true}, error => {
             if (error)
