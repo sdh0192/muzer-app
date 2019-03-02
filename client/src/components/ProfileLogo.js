@@ -6,7 +6,7 @@ const ProfileLogo = (props) => (
         <Navbar.Collapse>
             <Navbar.Brand href="/">
                 <img
-                    src="../image/MuzerLogoWhite.png"
+                    src="../image/navbarLogoWhite.png"
                     height="60"
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
