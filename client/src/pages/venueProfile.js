@@ -12,6 +12,7 @@ class venueProfile extends React.Component {
     state = {
         socialLinks: [],
         availability: [],
+        phoneNumber: "+1",
         contacts: [],
         picture: null
     }
@@ -33,7 +34,7 @@ class venueProfile extends React.Component {
             },
             contacts: this.state.contacts,
             profilePic: this.state.picture,
-            phoneNumber: e.target.phoneNumber.value,
+            phoneNumber: this.state.phoneNumber,
             bio: e.target.bio.value,
             socialLinks: this.state.socialLinks,
             availability: this.state.availability
@@ -48,6 +49,8 @@ class venueProfile extends React.Component {
     }
 
     handlePictureChange = (filename) => this.setState({ picture: filename });
+
+    handlePhoneChange = (value) =>  this.setState({ phoneNumber: value });
 
     render() {
         return(
@@ -81,7 +84,14 @@ class venueProfile extends React.Component {
                                 </Form.Group>
                                 <Form.Group controlId="phoneNumber">
                                     <Form.Label>Phone Number</Form.Label>
-                                    <PhoneNumber containerClass="null" inputClass="form-control" defaultCountry={'us'} inputExtraProps={{ name: 'phoneNumber', required: true }} disableAreaCodes disableCountryCodes disableDropdown />
+                                    <PhoneNumber 
+                                        inputClass="form-control" 
+                                        containerClass="null"
+                                        defaultCountry={'us'} 
+                                        onChange={this.handlePhoneChange.bind(this)} 
+                                        inputExtraProps={{ name: 'phoneNumber', required: true, value: this.state.phoneNumber }}  
+                                        countryCodeEditable={false} 
+                                        disableDropdown={true} />
                                 </Form.Group>                                
                                 <Form.Group controlId="contacts">
                                     <Form.Label>Contacts:</Form.Label>

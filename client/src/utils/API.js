@@ -29,10 +29,8 @@ export default {
 		console.log(response);
 		if (!response.data) window.location.replace('/signin');
 		else if(!response.data.profile) window.location.replace('/new');
-		a = response.data;
+		return response.data;
 	},
-
-	getCurrentUser: () => axios.get('api/user'),
 
 	// Gets all 
 	getTopPosts: function () {

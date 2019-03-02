@@ -1,5 +1,7 @@
 import React from "react";
-import { Navbar, Form, FormControl } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
+
+
 
 const NewsFeedNav = (props) => (
     <Navbar bg="dark" fixed="top" variant="dark" className="navbar-muzer">
@@ -7,7 +9,7 @@ const NewsFeedNav = (props) => (
             <Navbar.Brand href="/">
                 <img
                     src="image/MuzerLogoWhite.png"
-                    height="45"
+                    height="60"
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
                 />
@@ -17,12 +19,23 @@ const NewsFeedNav = (props) => (
         <Form inline>
             <FormControl type="text" placeholder="Search" />                 
         </Form>
-
+        { props.profile ? (
             <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text variant="outline-primary">
-               {props.userName} | <a href="/auth/logout">Logout</a>
-            </Navbar.Text>
-        </Navbar.Collapse>
+                <Navbar.Brand>
+                        <img alt="Profile" className="small-profile" src={`/uploads/${props.profile ? props.profile.profilePic : "placeholder.png" }`}/>
+                </Navbar.Brand>
+                <Nav>                            
+                    <Nav.Link href="/profile">{props.profile.firstName}</Nav.Link>
+                    <Nav.Link href="/auth/logout">Logout</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        ) : (
+            <Navbar.Collapse className="justify-content-end">
+                <Nav>   
+                    <Nav.Link href="/signin">Signin</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        )}
     </Navbar>
 );
 

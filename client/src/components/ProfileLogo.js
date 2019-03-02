@@ -19,9 +19,9 @@ const ProfileLogo = (props) => (
         </Nav>
 
         <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text variant="outline-primary">
-                User | <a href="/auth/logout">Logout</a>
-            </Navbar.Text>
+            <Nav>   
+                <Nav.Link href="/auth/logout">Logout</Nav.Link>
+            </Nav>
         </Navbar.Collapse>
     </Navbar>
 

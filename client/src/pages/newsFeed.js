@@ -14,21 +14,15 @@ class newsFeed extends React.Component {
         message: null
     }
 
-    constructor(props)
-    {
-        super(props);
+    componentDidMount = async function() {
         
-        API.getCurrentUser().then(response => {
-            this.setState({
-                currentUser: response.data.profile ? response.data : null
-            });
-        });
-        
+        let user = await API.autenticate();
+        this.state.currentUser = user;
+
         API.getTopPosts().then(Response => {
-                
-                if(!Response.data.error) this.setState({ recent: Response.data });
-                console.log(this.state);
-            });
+            if (!Response.data.error) this.setState({ recent: Response.data });
+            console.log(this.state);
+        });
     }
 
     post = (e) => {
@@ -60,7 +54,7 @@ class newsFeed extends React.Component {
         console.log(this.state.currentUser)
         return(
             <div>
-                <NewsFeedNav userName={this.state.currentUser ? this.state.currentUser.profile.firstName : null} />                
+                <NewsFeedNav profile={this.state.currentUser && this.state.currentUser.profile ? this.state.currentUser.profile : null} />                
                 <div style={{ marginTop: 120 }}></div>
                 <Container>
                     <Row className="justify-content-md-center">
