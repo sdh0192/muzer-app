@@ -17,7 +17,12 @@ class newsFeed extends React.Component {
     constructor(props)
     {
         super(props);
-        // API.autenticate();
+        
+        API.getCurrentUser().then(response => {
+            this.setState({
+                currentUser: response.data.profile ? response.data : null
+            });
+        });
         
         API.getTopPosts().then(Response => {
                 
@@ -52,10 +57,11 @@ class newsFeed extends React.Component {
     }
 
     render() {
-        //console.log(this.state)
+        console.log(this.state.currentUser)
         return(
             <div>
-                <NewsFeedNav />
+                <NewsFeedNav userName={this.state.currentUser ? this.state.currentUser.profile.firstName : null} />                
+                <div style={{ marginTop: 120 }}></div>
                 <Container>
                     <Row className="justify-content-md-center">
                         <Col lg="9">

@@ -23,15 +23,16 @@ export default {
 		});
 	},
 
-	autenticate: async function()
+	autenticate: async function(a)
 	{
 		let response = await axios.get('api/user');
 		console.log(response);
 		if (!response.data) window.location.replace('/signin');
 		else if(!response.data.profile) window.location.replace('/new');
-
-		return response.data;
+		a = response.data;
 	},
+
+	getCurrentUser: () => axios.get('api/user'),
 
 	// Gets all 
 	getTopPosts: function () {

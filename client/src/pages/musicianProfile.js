@@ -55,15 +55,11 @@ class musicianProfile extends React.Component {
     render() {
         return (
             <div>
-                <ProfileLogo logo="../image/MuzerLogo.png" />
+                <ProfileLogo title="Create Your Profile" />
+                <div style={{ marginTop: 120 }}></div>
                 {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
                 <Form method="post" onSubmit={this.SaveButtton.bind(this)} className="MusicianProfile">
                     <Container>
-                        <Row>
-                            <Col xs="12" className="text-center">
-                                <h1><u>Create Your Profile</u></h1>
-                            </Col>
-                        </Row>
                         <Row>
                             <Col lg="3">
                                 <PicControl onChange={this.handlePictureChange.bind(this)} picture={this.state.picture} location="../../" />

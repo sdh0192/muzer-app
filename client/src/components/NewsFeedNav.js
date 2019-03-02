@@ -1,12 +1,12 @@
 import React from "react";
-import { Navbar, Form, Button, FormControl, InputGroup } from 'react-bootstrap';
+import { Navbar, Form, FormControl } from 'react-bootstrap';
 
-const NewsFeedNav = (prop) => (
-    <Navbar bg="light" variant="light" style={{ marginBottom: 100 }}>
+const NewsFeedNav = (props) => (
+    <Navbar bg="dark" fixed="top" variant="dark" className="navbar-muzer">
         <Navbar.Collapse>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
                 <img
-                    src="image/MuzerLogo.png"
+                    src="image/MuzerLogoWhite.png"
                     height="45"
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
@@ -15,15 +15,12 @@ const NewsFeedNav = (prop) => (
         </Navbar.Collapse>
         
         <Form inline>
-            <InputGroup>
-                <FormControl type="text" placeholder="Search" style={{ width: 250 }} />
-                <Button variant="outline-primary">Search</Button>
-            </InputGroup>                    
+            <FormControl type="text" placeholder="Search" />                 
         </Form>
 
             <Navbar.Collapse className="justify-content-end">
             <Navbar.Text variant="outline-primary">
-               User | <a href="/auth/logout">Logout</a>
+               {props.userName} | <a href="/auth/logout">Logout</a>
             </Navbar.Text>
         </Navbar.Collapse>
     </Navbar>

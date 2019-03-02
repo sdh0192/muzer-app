@@ -52,7 +52,8 @@ class venueProfile extends React.Component {
     render() {
         return(
             <div>
-                <ProfileLogo logo="../image/MuzerLogo.png" />
+                <ProfileLogo title="Create Your Profile" />
+                <div style={{ marginTop: 120 }}></div>
                 <Form method="post" onSubmit={this.SaveButtton.bind(this)}>
                     <Container>
                         <Row>

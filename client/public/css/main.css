@@ -3,6 +3,10 @@ html {
    
 }
 
+body {
+    
+}
+
 .spacing{
     margin-top: 100;
 }
@@ -93,4 +97,12 @@ html {
 
 .postfeed {
     border-bottom: #6c757d solid;
+}
+
+.navbar-muzer {
+    background-color: #593196 !important;
+    color: white !important;
+    margin-bottom: 100px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }
