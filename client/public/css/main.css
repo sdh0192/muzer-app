@@ -113,17 +113,19 @@ body {
     height: 45px;
 }
 
+.postSpacing {
+    margin-top: 10px;
+}
+
 .ui.selection.dropdown
 {
     border-radius: 0;
     border-color:#cbc8d0;
 }
-
 .ui.selection.dropdown:hover
 {
     border-color:#cbc8d0;
 }
-
 .ui.selection.active.dropdown {
  border-color:#593196;
 }

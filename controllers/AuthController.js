@@ -27,7 +27,7 @@ const AuthController = {
         {
             if (err) { return next(err); }
 
-            if (!user) { return returnJsonError(res, 'Incorrect email and password combination.'); }
+            if (!user) { return returnJsonError(res, 'Incorrect email and password combination. Try again?'); }
 
             req.logIn(user, function(err) 
             {
@@ -62,7 +62,7 @@ const AuthController = {
                         else if(dbPost) 
                         {
                             mongoose.disconnect();
-                            return returnJsonError(res, 'An user already register using this email account.');
+                            return returnJsonError(res, 'A user already registered using this email address.');
                         }
 
                         AuthController.createLocalAccount(req, res, req.body.email, req.body.password)

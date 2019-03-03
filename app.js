@@ -11,6 +11,7 @@ const authRouter = require("./routes/authRoutes");
 const uploadRouter = require("./routes/uploadRoutes");
 const profileRouter = require("./routes/profileRoutes");
 const postRouter = require("./routes/postRoutes");
+const searchRouter = require("./routes/searchRoutes");
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/auth', authRouter);
 app.use('/api', uploadRouter);
 app.use('/api', profileRouter);
 app.use('/api', postRouter);
+app.use("/api", searchRouter);
 app.get('/api/user', (req, res) => res.json(req.user));
 app.use('/users', usersRouter);
 app.use('*', indexRouter);

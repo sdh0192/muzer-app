@@ -76,7 +76,7 @@ class newsFeed extends React.Component {
                     </Row>  
                     <Row  className="justify-content-md-center">
                         <Col lg="9">
-                            {this.state.recent.map(item => <Post key={item.id} title={item.name} value={item.postContent} />)}
+                            {this.state.recent.map(item => <Post key={item.id} item={item} />)}
                         </Col>
                     </Row>      
 
