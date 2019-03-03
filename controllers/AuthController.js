@@ -27,7 +27,7 @@ const AuthController = {
         {
             if (err) { return next(err); }
 
-            if (!user) { return returnJsonError(res, 'Incorrect email and password combination.'); }
+            if (!user) { return returnJsonError(res, 'Incorrect email and password combination. Try again?'); }
 
             req.logIn(user, function(err) 
             {
@@ -62,17 +62,17 @@ const AuthController = {
                         else if(dbPost) 
                         {
                             mongoose.disconnect();
-                            return returnJsonError(res, 'An user already register using this email account.');
+                            return returnJsonError(res, 'A user already registered using this email address.');
                         }
 
-                        AuthController.createLocalAccount(res, req.body.email, req.body.password)
+                        AuthController.createLocalAccount(req, res, req.body.email, req.body.password)
                     });
             });
         }
         else returnJsonError(res, 'Validation failed.');
     },
 
-    createLocalAccount: function(res, email, password)
+    createLocalAccount: function(req, res, email, password)
     {
         let newAccount = new db.Account({ 
             email: email,
@@ -88,8 +88,11 @@ const AuthController = {
             }
             else
             {
-                mongoose.disconnect();
-                res.json(account);
+                req.logIn(account, function(err) 
+                {
+                    mongoose.disconnect();
+                    res.json(account);
+                });                
             }						
         });
     },

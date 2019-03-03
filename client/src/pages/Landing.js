@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import LandingLogo from '../components/LandingLogo';
 import Footer from "../components/Footer";
+import GoogleButton from 'react-google-button';
 
 const Landing = (props) => (
 
@@ -12,17 +13,21 @@ const Landing = (props) => (
             <Row className="justify-content-md-center" >
                 <Col xs lg="6" className="text-center">
                     <Button variant="primary" href="/signup" size="lg">Sign Up</Button>
-                    <span> or </span>
-                    <Button variant="outline-dark" href="/auth/google" size="lg">Sign in with Google</Button>
+                    <span style={{ margin: "0px 10px"}}>or</span>
+                    <a style={{display:"inline-block"}} href="/auth/google"><GoogleButton /></a>
                 </Col>
             </Row>
+            <div style={{ marginTop: 50 }}></div>
             <Row>
                 <Col xs="12" className="text-center">
                     <p>Already have an account?</p>
                 </Col>
+            </Row>
+            <div style={{ marginTop: 20 }}></div>
+            <Row>
                 <Col xs="12" className="text-center">
                     <Button variant="outline-primary" href="/signin">Sign In</Button>
-                    <span> or </span>
+                    <span style={{ margin: "0px 10px"}}>or</span>
                     <Link to="/feeds">continue as guest</Link>
                 </Col>
             </Row>

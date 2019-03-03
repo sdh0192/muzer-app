@@ -76,7 +76,7 @@ passport.deserializeUser(function (id, cb) {
 		if (error) return cb(error);
 
 		db.AccountBase.findById(id)
-			.populate('Profile')
+			.populate('profile')
 			.exec(function (error, user) {
 				if (error) {
 					mongoose.disconnect();

@@ -39,7 +39,7 @@ class SignUp extends React.Component {
             if (response.data.error) {
                 this.setState(response.data);
             }
-            else { window.location.replace("/profile") }
+            else { window.location.replace("/new") }
         });
     }
 

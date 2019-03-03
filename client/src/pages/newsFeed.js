@@ -14,16 +14,15 @@ class newsFeed extends React.Component {
         message: null
     }
 
-    constructor(props)
-    {
-        super(props);
-        API.autenticate();
+    componentDidMount = async function() {
         
+        let user = await API.autenticate();
+        this.state.currentUser = user;
+
         API.getTopPosts().then(Response => {
-                
-                if(!Response.data.error) this.setState({ recent: Response.data });
-                console.log(this.state);
-            });
+            if (!Response.data.error) this.setState({ recent: Response.data });
+            console.log(this.state);
+        });
     }
 
     post = (e) => {
@@ -36,10 +35,13 @@ class newsFeed extends React.Component {
             let newPost = {
                 content: post
             }
+            
+            e.target.newPost.value = null;
 
             API.postPost(newPost).then(response => {
                 console.log(response.data);
-                this.state.recent.push(response.data);
+                this.state.recent.unshift(response.data);
+                this.setState({ recent: this.state.recent });
             })
         }
         else
@@ -49,10 +51,11 @@ class newsFeed extends React.Component {
     }
 
     render() {
-        //console.log(this.state)
+        console.log(this.state.currentUser)
         return(
             <div>
-                <NewsFeedNav />
+                <NewsFeedNav profile={this.state.currentUser && this.state.currentUser.profile ? this.state.currentUser.profile : null} />                
+                <div style={{ marginTop: 120 }}></div>
                 <Container>
                     <Row className="justify-content-md-center">
                         <Col lg="9">
@@ -73,7 +76,7 @@ class newsFeed extends React.Component {
                     </Row>  
                     <Row  className="justify-content-md-center">
                         <Col lg="9">
-                            {this.state.recent.map(item => <Post key={item.id} title={item.name} value={item.postContent} />)}
+                            {this.state.recent.map(item => <Post key={item.id} item={item} />)}
                         </Col>
                     </Row>      
 

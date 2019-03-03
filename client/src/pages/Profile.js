@@ -2,25 +2,19 @@ import React from "react";
 import API from "../utils/API";
 
 class Profile extends React.Component {
-    
-    constructor(props)
-    {
+
+    constructor(props) {
         super(props);
-        API.autenticate();
+        API.autenticate("../");
     }
-    
-    render() 
-    {
-        return(
-        <div>
+
+    render() {
+        console.log(this.props)
+        return (
             <div>
-            <img src="image/MuzerLogo.png" alt="App Logo says Muzer"/>
+                <span>{this.props.match.params.id}</span>
             </div>
 
-
-
-        </div>
-            
         );
     }
 }
