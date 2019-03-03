@@ -1,13 +1,15 @@
 import React from "react";
-import { Navbar, Form, Button, FormControl, InputGroup } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 
-const NewsFeedNav = (prop) => (
-    <Navbar bg="light" variant="light" style={{ marginBottom: 100 }}>
+
+
+const NewsFeedNav = (props) => (
+    <Navbar bg="dark" fixed="top" variant="dark" className="navbar-muzer">
         <Navbar.Collapse>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
                 <img
-                    src="image/MuzerLogo.png"
-                    height="45"
+                    src="image/navbarLogoWhite.png"
+                    height="60"
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
                 />
@@ -15,17 +17,25 @@ const NewsFeedNav = (prop) => (
         </Navbar.Collapse>
         
         <Form inline>
-            <InputGroup>
-                <FormControl type="text" placeholder="Search" style={{ width: 250 }} />
-                <Button variant="outline-primary">Search</Button>
-            </InputGroup>                    
+            <FormControl type="text" placeholder="Search" />                 
         </Form>
-
+        { props.profile ? (
             <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text variant="outline-primary">
-               User | <a href="/auth/logout">Logout</a>
-            </Navbar.Text>
-        </Navbar.Collapse>
+                <Navbar.Brand>
+                        <img alt="Profile" className="small-profile" src={`/uploads/${props.profile ? props.profile.profilePic : "placeholder.png" }`}/>
+                </Navbar.Brand>
+                <Nav>                            
+                    <Nav.Link href="/profile">{props.profile.firstName}</Nav.Link>
+                    <Nav.Link href="/auth/logout">Logout</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        ) : (
+            <Navbar.Collapse className="justify-content-end">
+                <Nav>   
+                    <Nav.Link href="/signin">Signin</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        )}
     </Navbar>
 );
 

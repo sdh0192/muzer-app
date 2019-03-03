@@ -34,7 +34,7 @@ class PicControl extends React.Component {
     triggerClick(e)
     {
         e.preventDefault();
-        let fileInput = e.target.parentElement.children[0];
+        let fileInput = document.getElementById("pic-control-input");
         fileInput.click();
     }
 
@@ -44,7 +44,7 @@ class PicControl extends React.Component {
             <div>
                 <img id="profilePic" src={this.state.selectedPicture ? `${this.props.location}uploads/${this.state.selectedPicture}` : `${this.props.location}uploads/${this.state.defaultPicture}`} alt='Profile' width={250} height={250} />
                 <div id="profilePicButton">
-                    <Form.Control style={{ visibility: "hidden" }} onChange={this.handleChange.bind(this)} name="test" type="file" placeholder="Name" required />
+                    <Form.Control style={{ visibility: "hidden" }} onChange={this.handleChange.bind(this)} name="test" id="pic-control-input" type="file" placeholder="Name" required />
                     <button className="btn btn-primary" type="button" onClick={this.triggerClick}>+</button>
                 </div>
             </div>

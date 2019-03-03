@@ -14,6 +14,7 @@ class musicianProfile extends React.Component {
     state = {
         socialLinks: [],
         availability: [],
+        phoneNumber: "+1",
         genres: [],
         instruments: [],
         picture: null
@@ -32,7 +33,7 @@ class musicianProfile extends React.Component {
             genres: this.state.genres,
             instruments: this.state.instruments,
             profilePic: this.state.picture,
-            phoneNumber: e.target.phoneNumber.value,
+            phoneNumber: this.state.phoneNumber,
             bio: e.target.bio.value,
             socialLinks: this.state.socialLinks,
             availability: this.state.availability
@@ -52,18 +53,16 @@ class musicianProfile extends React.Component {
 
     handlePictureChange = (filename) => this.setState({ picture: filename });
 
+    handlePhoneChange = (value) => this.setState({ phoneNumber: value });
+
     render() {
         return (
             <div>
-                <ProfileLogo logo="../image/MuzerLogo.png" />
+                <ProfileLogo title="Create Your Profile" />
+                <div style={{ marginTop: 120 }}></div>
                 {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
                 <Form method="post" onSubmit={this.SaveButtton.bind(this)} className="MusicianProfile">
                     <Container>
-                        <Row>
-                            <Col xs="12" className="text-center">
-                                <h1><u>Create Your Profile</u></h1>
-                            </Col>
-                        </Row>
                         <Row>
                             <Col lg="3">
                                 <PicControl onChange={this.handlePictureChange.bind(this)} picture={this.state.picture} location="../../" />
@@ -83,7 +82,14 @@ class musicianProfile extends React.Component {
                                 </Form.Group>
                                 <Form.Group controlId="phoneNumber">
                                     <Form.Label>Phone Number</Form.Label>
-                                    <PhoneNumber containerClass="null" inputClass="form-control" defaultCountry={'us'} inputExtraProps={{ name: 'phoneNumber', required: true }} disableAreaCodes disableCountryCodes disableDropdown />
+                                    <PhoneNumber 
+                                        inputClass="form-control" 
+                                        containerClass="null"
+                                        defaultCountry={'us'} 
+                                        onChange={this.handlePhoneChange.bind(this)} 
+                                        inputExtraProps={{ name: 'phoneNumber', required: true, value: this.state.phoneNumber }}  
+                                        countryCodeEditable={false} 
+                                        disableDropdown={true} />
                                 </Form.Group>
                                 <Form.Group controlId="genres">
                                     <Form.Label>Genres</Form.Label>

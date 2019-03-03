@@ -3,6 +3,12 @@ html {
    
 }
 
+body {
+    background-image: url('../image/funky-lines.png');
+    background-repeat: repeat;
+    back
+}
+
 .spacing{
     margin-top: 100;
 }
@@ -95,6 +101,52 @@ html {
     border-bottom: #6c757d solid;
 }
 
+.navbar-muzer {
+    background-color: #593196 !important;
+    color: white !important;
+    margin-bottom: 100px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.small-profile {
+    height: 45px;
+}
+
 .postSpacing {
     margin-top: 10px;
+}
+
+.ui.selection.dropdown
+{
+    border-radius: 0;
+    border-color:#cbc8d0;
+}
+.ui.selection.dropdown:hover
+{
+    border-color:#cbc8d0;
+}
+.ui.selection.active.dropdown {
+ border-color:#593196;
+}
+.ui.selection.active.dropdown .menu {
+ border-color:#593196;
+ border-radius: 0;
+}
+.ui.selection.dropdown:focus {
+ border-color:#593196;
+}
+.ui.selection.dropdown:focus .menu {
+ border-color:#593196;
+}
+.ui.selection.active.dropdown:hover {
+ border-color:#593196;
+ box-shadow: 0 0 5px rgba(100,65,164,0.4);
+}
+.ui.selection.active.dropdown:hover .menu {
+ border-color:#593196;
+ box-shadow: 0 0 5px rgba(100,65,164,0.4);
+}
+.ui.label {
+    border-radius: 0;
 }
