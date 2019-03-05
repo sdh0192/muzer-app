@@ -1,4 +1,5 @@
 import React from "react";
+import Musicianprofile from "../components/MusicianProfile"
 import API from "../utils/API";
 
 class Profile extends React.Component {
