@@ -4,6 +4,7 @@ import API from "../utils/API";
 import NewsFeedNav from "../components/NewsFeedNav";
 import Footer from "../components/Footer";
 import Venue from "../components/venueProfile";
+import Musicianprofile from "../components/MusicianProfile";
 
 class Profile extends React.Component {
     state = {
