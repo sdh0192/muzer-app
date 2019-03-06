@@ -11,7 +11,7 @@ const ProfileSchema = new Schema({
 
     socialLinks: [{ site: String, link: String }],
 
-    availability: String
+    availability: [String]
 },
 { collection : 'profiles', discriminatorKey : '_type' });
 
