@@ -107,7 +107,7 @@ class musicianProfile extends React.Component {
                             <Col lg="4">
                                 <Form.Group controlId="social-links">
                                     <Form.Label>Social Links:</Form.Label>
-                                    <ListControl fields={["Site", "Link"]} values={this.state.socialLinks} />
+                                    <ListControl fields={["site", "link"]} values={this.state.socialLinks} />
                                 </Form.Group>
                                 <Form.Group controlId="availability" className="clearfix">
                                     <Form.Label>Availability:</Form.Label>
