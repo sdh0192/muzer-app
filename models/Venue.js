@@ -15,7 +15,7 @@ const VenueProfileSchema = new Schema({
 
         state: { type: String, require: true },
 
-        zipcode: { type: Number, require: true }
+        zipcode: { type: String, require: true }
     },
 
     contacts:[{

@@ -10,7 +10,7 @@ const ProfileController = {
             if (error)
                 return res.json({ error: true, message: "Connection to the Database failed." });
             // db query to get profile
-            db.Profile.findOne()
+            db.Profile.findById(req.query.id)
                 // if error, return error
                 .exec((error, profile) => {
                     if (error) {

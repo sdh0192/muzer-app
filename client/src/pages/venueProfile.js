@@ -30,7 +30,7 @@ class venueProfile extends React.Component {
                 address2: e.target.address2.value,
                 city: e.target.city.value,
                 state: e.target.state.value,
-                zipCode: e.target.zipCode.value,
+                zipcode: e.target.zipCode.value,
             },
             contacts: this.state.contacts,
             profilePic: this.state.picture,
@@ -95,7 +95,7 @@ class venueProfile extends React.Component {
                                 </Form.Group>                                
                                 <Form.Group controlId="contacts">
                                     <Form.Label>Contacts:</Form.Label>
-                                    <ListControl fields={["Name", "Email", "Phone"]} values={this.state.contacts} />
+                                    <ListControl fields={["name", "email", "phoneNumber"]} values={this.state.contacts} />
                                 </Form.Group>
                                 <Form.Group controlId="bio">
                                     <Form.Label>Bio:</Form.Label>
@@ -105,7 +105,7 @@ class venueProfile extends React.Component {
                             <Col lg="4">
                                 <Form.Group controlId="social-links">
                                     <Form.Label>Social Links:</Form.Label>
-                                    <ListControl fields={["Site", "Link"]} values={this.state.socialLinks} />
+                                    <ListControl fields={["site", "link"]} values={this.state.socialLinks} />
                                 </Form.Group>
                                 <Form.Group controlId="availability" className="clearfix">
                                     <Form.Label>Availability:</Form.Label>
