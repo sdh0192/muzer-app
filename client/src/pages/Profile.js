@@ -4,7 +4,7 @@ import API from "../utils/API";
 import NewsFeedNav from "../components/NewsFeedNav";
 import Footer from "../components/Footer";
 import Venue from "../components/venueProfile";
-import Musicianprofile from "../components/MusicianProfile";
+import Musician from "../components/MusicianProfile";
 
 class Profile extends React.Component {
     state = {
@@ -36,7 +36,7 @@ class Profile extends React.Component {
         if(this.state.currentProfile) switch (this.state.currentProfile._type)
         {
             case "Musician":
-                print = <Venue profile={this.state.currentProfile} />
+                print = <Musician profile={this.state.currentProfile} />
                 break;
             case "Band":
                 print = <h1>Is A Band</h1>
