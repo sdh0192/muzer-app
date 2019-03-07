@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require("./validation/passport");
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+//const usersRouter = require('./routes/users');
 const authRouter = require("./routes/authRoutes");
 const uploadRouter = require("./routes/uploadRoutes");
 const profileRouter = require("./routes/profileRoutes");
@@ -31,8 +31,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, './client/build')));
-app.use('/uploads', express.static(path.join(__dirname, './public/uploads')));
+app.use(express.static(path.join(__dirname, '/client/build')));
+app.use('/uploads', express.static(path.join(__dirname, '/public/uploads')));
 
 app.use('/auth', authRouter);
 app.use('/api', uploadRouter);
@@ -40,7 +40,7 @@ app.use('/api', profileRouter);
 app.use('/api', postRouter);
 app.use("/api", searchRouter);
 app.get('/api/user', (req, res) => res.json(req.user));
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 app.use('*', indexRouter);
 
 module.exports = app;
