@@ -7,15 +7,10 @@ const searchBox = (props) => {
 
     return (
         
-
-        <Row className="postSpacing">
-            <Col lg="1" className="justify-content-md-center">
-            <a href={"/profile/" + props.profile.id}><img alt="Profile"  width="50px" src={`/uploads/${props.profile ? props.profile.profilePic : "placeholder.png" }`}/></a>
-            </Col>
-            <Col lg="11">
-               <Row>{name}</Row>
-            </Col>
-        </Row>
+        <div key={props.key} className="post-component">
+            <a href={"/profile/" + props.profile._id}><img alt="Profile" className="post-profile-pic" style={{ width: 50 }} src={`/uploads/${props.profile ? props.profile.profilePic : "placeholder.png" }`}/></a>
+            <span>{name}</span>
+        </div>
     );
 } 
 
