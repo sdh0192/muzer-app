@@ -112,8 +112,20 @@ body {
     height: 45px;
 }
 
-.postSpacing {
-    margin-top: 10px;
+.post-component {
+    margin-top: 3px;
+    background-color: white;
+    padding: 15px;
+}
+
+.post-content {
+    margin-bottom: 10px;
+}
+
+.post-profile-pic{
+    display: inline-block;
+    width: 30px;
+    margin-right: 10px
 }
 
 .ui.selection.dropdown

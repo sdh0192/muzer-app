@@ -11,7 +11,7 @@ const MusicianProfile = (props) => {
          <h1>{props.profile.firstName} {props.profile.lastName}</h1>
          <Row>
             <Col lg="3">
-                <img alt={props.profile.name} src={`uploads/${props.profile.profilePic}`} />
+                <img alt={props.profile.name} src={`/uploads/${props.profile.profilePic}`} />
                 <h2>Contact Info</h2>
                 <p>{props.profile.phoneNumber}</p>
                 <p>{props.profile.city}</p>
