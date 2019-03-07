@@ -102,11 +102,11 @@ class bandProfile extends React.Component {
                                 </Form.Group>
                                 <Form.Group controlId="members">
                                     <Form.Label>Members:</Form.Label>
-                                    <ListControl fields={["Name", "Instrument"]} values={this.state.members} />
+                                    <ListControl fields={["name", "instrument"]} values={this.state.members} />
                                 </Form.Group>                                
                                 <Form.Group controlId="contacts">
                                     <Form.Label>Contacts:</Form.Label>
-                                    <ListControl fields={["Name", "Email", "Phone"]} values={this.state.contacts} />
+                                    <ListControl fields={["name", "email", "phoneNumber"]} values={this.state.contacts} />
                                 </Form.Group>
                                 <Form.Group controlId="label">
                                     <Form.Label>Label</Form.Label>

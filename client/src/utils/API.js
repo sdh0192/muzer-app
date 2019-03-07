@@ -10,6 +10,13 @@ export default {
 		return axios.post("auth/signup", credentials);
 	},
 
+	getProfile: async function(id)
+	{
+		let response = await axios.get("../api/profile?id=" + id);
+		if(response.data.error) window.location.replace('../feeds');
+		return response.data;
+	},
+
 	postProfile: function (profile) {
 		return axios.post("../api/profile", profile);
 	},
@@ -36,5 +43,9 @@ export default {
 
 	postPost: function (post) {
 		return axios.post("api/post", post);
+	},
+
+	getSearchResults: function(search) {
+		return axios.get("api/searchresults?search=" + search);
 	}
 };

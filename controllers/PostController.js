@@ -30,7 +30,7 @@ const PostController = {
             if (error)
                 return res.json({ error: true, message: "Connection to the Database failed." });
             // db query to get post
-            db.Post.find().limit(15).populate('profile')
+            db.Post.find().sort({ field: 'asc', _id: -1 }).limit(15).populate('profile')
                 // if error, return error
                 .exec((error, posts) => {
                     if (error) {
