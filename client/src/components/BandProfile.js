@@ -11,7 +11,7 @@ console.log(props.profile);
          <h1>{props.profile.name}</h1>
          <Row>
             <Col lg="3">
-                <img alt={props.profile.name} src={`uploads/${props.profile.profilePic}`} />
+                <img alt={props.profile.name} src={`/uploads/${props.profile.profilePic}`} />
                 <p>Local Town: {props.profile.city}</p>
                 <h2>Contact Info</h2>
                 <p>{props.profile.phoneNumber}</p>

@@ -12,6 +12,7 @@ const MusicianProfile = (props) => {
          <Row>
             <Col lg="3">
                 <img alt={props.profile.name} src={`/uploads/${props.profile.profilePic}`} />
+                <p>Local Town: {props.profile.city}</p>
                 <h2>Contact Info</h2>
                 <p>{props.profile.phoneNumber}</p>
                 <ul>{props.profile.socialLinks.map(item => <li key={item.site}><a key={item.site} target="_blank" href={item.link}>{item.site}</a></li>)}</ul>
