@@ -14,12 +14,12 @@ const SearchController = {
                                     { genres:{$regex: req.query.search,}}, { instruments:{$regex: req.query.search}}]})
                 .exec((error, profiles) => {
                     if (error) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ error: true, message: "Connection to the Database failed." });
                     }
                     //if post found, return post
                     else if (profiles) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json(profiles);
                     }
                 });

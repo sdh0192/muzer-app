@@ -14,12 +14,12 @@ const ProfileController = {
                 // if error, return error
                 .exec((error, profile) => {
                     if (error) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ error: true, message: "Connection to the Database failed." });
                     }
                     //if profile found, return profile
                     else if (profile) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json(profile);
                     }
                 });
@@ -50,7 +50,7 @@ const ProfileController = {
                 .then((profile) => {
                     req.user.profile = profile._id;
                     req.user.save().then(account => {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json(profile);
                     });
                 });
@@ -123,17 +123,17 @@ const ProfileController = {
                 .exec((error, profile) => {
                     // if error, return error
                     if (error) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ error: true, message: "Connection to the Database failed." });
                     }
                     //if profile found, return profile
                     else if (profile) {
                         profile.save(function (error) {
                             if (error) {
-                                mongoose.disconnect();
+                                // mongoose.disconnect();
                                 return res.json({ error: true, message: "Error saving your data!" })
                             }
-                            mongoose.disconnect();
+                            // mongoose.disconnect();
                             return res.json(profile);
 
                         }
@@ -152,12 +152,12 @@ const ProfileController = {
                 .exec((error) => {
                     // if error, return error
                     if (error) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ error: true, message: "Connection to the Database failed." });
                     }
                     //if profile found, delete profile
                     else {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ message: "Your profile has been successfully deleted" });
                 };
             });

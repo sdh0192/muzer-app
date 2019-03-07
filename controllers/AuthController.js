@@ -56,12 +56,12 @@ const AuthController = {
                     {
                         if(error) 
                         {
-                            mongoose.disconnect();
+                            // mongoose.disconnect();
                             return returnJsonError(res, 'Connection to the Database failed.');
                         }					
                         else if(dbPost) 
                         {
-                            mongoose.disconnect();
+                            // mongoose.disconnect();
                             return returnJsonError(res, 'A user already registered using this email address.');
                         }
 
@@ -83,14 +83,14 @@ const AuthController = {
         {
             if (error)
             {
-                mongoose.disconnect();
+                // mongoose.disconnect();
                 return returnJsonError(res, 'Connection to the Database failed.');
             }
             else
             {
                 req.logIn(account, function(err) 
                 {
-                    mongoose.disconnect();
+                    // mongoose.disconnect();
                     res.json(account);
                 });                
             }						

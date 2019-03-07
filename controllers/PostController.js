@@ -18,7 +18,7 @@ const PostController = {
 
             newPost.save()
                 .then((post) => {
-                    mongoose.disconnect();
+                    // mongoose.disconnect();
                     return res.json(post);
                 });
         });
@@ -34,12 +34,12 @@ const PostController = {
                 // if error, return error
                 .exec((error, posts) => {
                     if (error) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ error: true, message: "Connection to the Database failed." });
                     }
                     //if post found, return post
                     else if (posts) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json(posts);
                     }
                 });
@@ -55,12 +55,12 @@ const PostController = {
                 .exec((error) => {
                     // if error, return error
                     if (error) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ error: true, message: "Connection to the Database failed." });
                     }
                     //if post found, delete post
                     else {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ error: true, message: "Your post has been successfully deleted" });
                     };
                 });
@@ -78,7 +78,7 @@ const PostController = {
 
                 db.Post.findById(postId).exec((error, post) => {
                     if (error) {
-                        mongoose.disconnect();
+                        // mongoose.disconnect();
                         return res.json({ error: true, message: "Connection to the Database failed." });
                     }
                     //if post found, return post
@@ -92,7 +92,7 @@ const PostController = {
 
                         post.comments.push(newComment);
                         post.save().then(() => {
-                            mongoose.disconnect();
+                            // mongoose.disconnect();
                             return res.json(newComment);
                         });
                     }

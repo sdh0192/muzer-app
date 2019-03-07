@@ -22,7 +22,7 @@ passport.use(
 					.then(existingUser => {
 						if (existingUser) {
 							// we already have a record with the given profile ID
-							mongoose.disconnect();
+							// mongoose.disconnect();
 							return done(null, existingUser);
 						}
 						else {
@@ -30,7 +30,7 @@ passport.use(
 							new db.GoogleAccount({ googleId: profile.id, email: profile.emails[0].value })
 								.save()
 								.then(user => {
-									mongoose.disconnect();
+									// mongoose.disconnect();
 									return done(null, user);
 								});
 						}
@@ -50,19 +50,19 @@ passport.use(new LocalStrategy({
 			.populate('Profile')
 			.exec((error, user) => {
 				if (error) {
-					mongoose.disconnect();
+					// mongoose.disconnect();
 					return cb(error);
 				}
 				else if (!user) {
-					mongoose.disconnect();
+					// mongoose.disconnect();
 					return cb(null, false);
 				}
 				else if (user.password != sha3_224(password)) {
-					mongoose.disconnect();
+					// mongoose.disconnect();
 					return cb(null, false);
 				}
 				else {
-					mongoose.disconnect();
+					// mongoose.disconnect();
 					return cb(null, user);
 				}
 			});
@@ -79,11 +79,11 @@ passport.deserializeUser(function (id, cb) {
 			.populate('profile')
 			.exec(function (error, user) {
 				if (error) {
-					mongoose.disconnect();
+					// mongoose.disconnect();
 					return cb(error);
 				}
 
-				mongoose.disconnect();
+				// mongoose.disconnect();
 				return cb(null, user);
 			});
 	});
