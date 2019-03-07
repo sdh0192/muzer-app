@@ -43,5 +43,9 @@ export default {
 
 	postPost: function (post) {
 		return axios.post("api/post", post);
+	},
+
+	getSearchResults: function(search) {
+		return axios.get("api/searchresults?search=" + search);
 	}
 };

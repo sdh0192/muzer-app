@@ -8,7 +8,7 @@ const VenueProfile = (props) => (
         <h1>{props.profile.name}</h1>
         <Row>
             <Col lg="3">
-                <img alt={props.profile.name} src={`uploads/${props.profile.profilePic}`} />
+                <img alt={props.profile.name} src={`/uploads/${props.profile.profilePic}`} />
                 <h2>Phone Number</h2>
                 <p>{props.profile.phoneNumber}</p>
                 <h2>links</h2>
