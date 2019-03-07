@@ -27,25 +27,24 @@ class SearchResults extends React.Component {
     render() {
     
         return (
-            <div>
+            <React.Fragment>
                 <NewsFeedNav profile={this.state.currentUser && this.state.currentUser.profile ? this.state.currentUser.profile : null} />
-                <div style={{ marginTop: 120 }}></div>
-                
-                <Container>
-                    <Row className="justify-content-md-center">
-                        <Col lg="9">
-                        <h1>Search Results</h1>
-                            {this.state.currentResults.map( profiles => { 
-                                console.log(profiles)
-                           return <SearchResultBox key={profiles.firstName} profile={profiles} />})
-                        }
-                        </Col>
-                    </Row>
-                </Container>
-                <Footer />
-            </div>
-
-
+                <div className="stickyFooter">
+                    <div style={{ paddingTop: 120 }}></div>
+                    <Container>
+                        <Row className="justify-content-md-center">
+                            <Col lg="9">
+                            <h1>Search Results</h1>
+                                {this.state.currentResults.map( profiles => { 
+                                    console.log(profiles)
+                            return <SearchResultBox key={profiles.firstName} profile={profiles} />})
+                            }
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+                <Footer className="fixed-bottom"/>
+            </React.Fragment>
         )
     }
 

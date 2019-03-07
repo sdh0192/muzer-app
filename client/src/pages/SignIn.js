@@ -43,28 +43,30 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <div>
-                <Container>
-                    <LandingLogo />
-                    <Row className="justify-content-md-center">
-                        <Col xs lg="6">
-                            {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
-                            <Form action="/auth/login" method='POST' onSubmit={this.validateLogin.bind(this)}>
-                                <Form.Group controlId="email">
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control name="email" type="email" placeholder="Enter email" required />
-                                </Form.Group>
-                                <Form.Group controlId="password">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control name="password" type="password" placeholder="Password" required />
-                                </Form.Group>
-                                <Button variant="primary" type="submit">Sign in</Button>
-                            </Form>
-                        </Col>
-                    </Row>
-                </Container>
-                <Footer className="fixed-bottom" />
-            </div>
+            <React.Fragment>
+                <div className="stickyFooter">
+                    <Container>
+                        <LandingLogo />
+                        <Row className="justify-content-md-center">
+                            <Col xs lg="6">
+                                {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
+                                <Form action="/auth/login" method='POST' onSubmit={this.validateLogin.bind(this)}>
+                                    <Form.Group controlId="email">
+                                        <Form.Label>Email address</Form.Label>
+                                        <Form.Control name="email" type="email" placeholder="Enter email" required />
+                                    </Form.Group>
+                                    <Form.Group controlId="password">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control name="password" type="password" placeholder="Password" required />
+                                    </Form.Group>
+                                    <Button variant="primary" type="submit">Sign in</Button>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+                <Footer className="fixed-bottom"/>
+            </React.Fragment>
         );
     }
 }

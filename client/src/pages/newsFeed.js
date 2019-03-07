@@ -53,36 +53,38 @@ class newsFeed extends React.Component {
     render() {
         console.log(this.state.currentUser)
         return(
-            <div>
-                <NewsFeedNav profile={this.state.currentUser && this.state.currentUser.profile ? this.state.currentUser.profile : null} />                
-                <div style={{ marginTop: 120 }}></div>
-                <Container>
-                    <Row className="justify-content-md-center">
-                        <Col lg="9">
-                            <h1 className="text-center">Create A Post</h1>
-                            {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
-                            <Form onSubmit={this.post.bind(this)}>
-                                <InputGroup controlid="bio">
-                                    <Form.Control name="newPost" as="textarea" rows="2" placeholder="Create a post" />
-                                    <Button variant="primary" type="submit">Post</Button>
-                                </InputGroup>
-                            </Form>                            
-                        </Col>
-                    </Row>
-                    <Row  className="justify-content-md-center">
-                        <Col lg="9" className="postfeed">
-                           <h1 className="mt-4">Recent Posts</h1>
-                        </Col>
-                    </Row>  
-                    <Row  className="justify-content-md-center">
-                        <Col lg="9">
-                            {this.state.recent.map(item => <Post key={item.id} item={item} />)}
-                        </Col>
-                    </Row>      
+            <React.Fragment>
+                <NewsFeedNav profile={this.state.currentUser && this.state.currentUser.profile ? this.state.currentUser.profile : null} />
+                <div className="stickyFooter">
+                    <div style={{ paddingTop: 120 }}></div>
+                    <Container>
+                        <Row className="justify-content-md-center">
+                            <Col lg="9">
+                                <h1 className="text-center">Create A Post</h1>
+                                {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
+                                <Form onSubmit={this.post.bind(this)}>
+                                    <InputGroup controlid="bio">
+                                        <Form.Control name="newPost" as="textarea" rows="2" placeholder="Create a post" />
+                                        <Button variant="primary" type="submit">Post</Button>
+                                    </InputGroup>
+                                </Form>                            
+                            </Col>
+                        </Row>
+                        <Row  className="justify-content-md-center">
+                            <Col lg="9" className="postfeed">
+                            <h1 className="mt-4">Recent Posts</h1>
+                            </Col>
+                        </Row>  
+                        <Row  className="justify-content-md-center">
+                            <Col lg="9">
+                                {this.state.recent.map(item => <Post key={item.id} item={item} />)}
+                            </Col>
+                        </Row>      
 
-                </Container>
-                <Footer className="fixed-bottom"/>    
-            </div>
+                    </Container>
+                </div>
+                <Footer className="fixed-bottom"/>
+            </React.Fragment>
         )
     }
 }

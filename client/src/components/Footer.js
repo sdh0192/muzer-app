@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = (props) => (
 
-    <div className="text-center" style={{ backgroundColor: "#17141F", marginTop: 150, paddingTop: 30, paddingBottom:50, color: "white" }}>
+    <div className="footer text-center">
         <p>Muzer &copy; 2019</p>
     </div>
 );

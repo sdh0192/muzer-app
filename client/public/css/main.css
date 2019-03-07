@@ -161,3 +161,18 @@ body {
 .ui.label {
     border-radius: 0;
 }
+
+.stickyFooter { 
+    box-sizing: border-box;
+    min-height: 90vh; 
+    }
+
+.footer {
+    background-color: #17141F;
+    margin-top: 1vh; 
+    height: 9vh;
+    box-sizing: border-box;
+    padding: 0;
+    padding-top: 15px;
+    color: white;
+}

@@ -50,12 +50,14 @@ class Profile extends React.Component {
                 break;
         }
         return (
-            <div>
-                <NewsFeedNav profile={this.state.currentUser && this.state.currentUser.profile ? this.state.currentUser.profile : null} />                
-                <div style={{ marginTop: 120 }}></div>
-                <Container>{print}</Container>
-                <Footer className="fixed-bottom"/>    
-            </div>            
+            <React.Fragment>
+                <NewsFeedNav profile={this.state.currentUser && this.state.currentUser.profile ? this.state.currentUser.profile : null} />
+                <div className="stickyFooter">
+                    <div style={{ paddingTop: 120 }}></div>
+                    <Container>{print}</Container>
+                </div>
+                <Footer />
+            </React.Fragment>           
         );
     }
 }

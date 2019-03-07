@@ -45,32 +45,34 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <div>
-                <Container>
-                    <LandingLogo />
-                    <Row className="justify-content-md-center">
-                        <Col xs lg="6">
-                            {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
-                            <Form action="/auth/signup" method='POST' onSubmit={this.validateSignup.bind(this)}>
-                                <Form.Group controlId="email">
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control name="email" type="email" placeholder="Email" />
-                                </Form.Group>
-                                <Form.Group controlId="password">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control name="password" type="password" placeholder="Password" />
-                                </Form.Group>
-                                <Form.Group controlId="confirmPassword">
-                                    <Form.Label>Confirm Password</Form.Label>
-                                    <Form.Control name="confirmPassword" type="password" placeholder="Confirm Password" />
-                                </Form.Group>
-                                <Button variant="primary" type="submit">Start Muzing!</Button>
-                            </Form>
-                        </Col>
-                    </Row>
-                </Container>
-                <Footer />
-            </div>
+            <React.Fragment>
+                <div className="stickyFooter">
+                    <Container>
+                        <LandingLogo />
+                        <Row className="justify-content-md-center">
+                            <Col xs lg="6">
+                                {this.state.error ? (<Alert variant="danger">{this.state.message}</Alert>) : null}
+                                <Form action="/auth/signup" method='POST' onSubmit={this.validateSignup.bind(this)}>
+                                    <Form.Group controlId="email">
+                                        <Form.Label>Email address</Form.Label>
+                                        <Form.Control name="email" type="email" placeholder="Email" />
+                                    </Form.Group>
+                                    <Form.Group controlId="password">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control name="password" type="password" placeholder="Password" />
+                                    </Form.Group>
+                                    <Form.Group controlId="confirmPassword">
+                                        <Form.Label>Confirm Password</Form.Label>
+                                        <Form.Control name="confirmPassword" type="password" placeholder="Confirm Password" />
+                                    </Form.Group>
+                                    <Button variant="primary" type="submit">Start Muzing!</Button>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+                <Footer className="fixed-bottom"/>
+            </React.Fragment>
         );
     }
 }
