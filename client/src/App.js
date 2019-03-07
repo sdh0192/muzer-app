@@ -10,6 +10,8 @@ import BandProfile from './pages/bandProfile';
 import VenueProfile from './pages/venueProfile';
 import NotFound from './pages/notFound';
 import newsFeed from './pages/newsFeed';
+import SearchResults from './pages/searchResults';
+
 
 
 class App extends React.Component {
@@ -26,6 +28,7 @@ class App extends React.Component {
                     <Route exact path="/new/venue" component={VenueProfile} />
                     <Route exact path="/profile/:id?" component={Profile} />
                     <Route exact path="/feeds" component={newsFeed} />
+                    <Route exact path="/searchresults" component={SearchResults} />
                     <Route path="*" component={NotFound} />
                 </Switch>
             </Router>
