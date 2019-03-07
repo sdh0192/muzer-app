@@ -5,6 +5,7 @@ import NewsFeedNav from "../components/NewsFeedNav";
 import Footer from "../components/Footer";
 import Venue from "../components/venueProfile";
 import Musician from "../components/MusicianProfile";
+import Band from "../components/BandProfile"
 
 class Profile extends React.Component {
     state = {
@@ -39,7 +40,7 @@ class Profile extends React.Component {
                 print = <Musician profile={this.state.currentProfile} />
                 break;
             case "Band":
-                print = <h1>Is A Band</h1>
+                print = <Band profile={this.state.currentProfile} />
                 break;
             case "Venue":
                 print = <Venue profile={this.state.currentProfile} />
