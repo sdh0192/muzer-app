@@ -1,0 +1,38 @@
+version: '3'
+services:
+  ws:
+    build:
+      context: ./
+      dockerfile: ws.dockerfile
+    container_name: ws
+    ports:
+     - "3001:3001"
+    volumes:
+     - .:/usr/src/app
+    environment:
+     - NODE_ENV=development
+     - CHOKIDAR_USEPOLLING=true
+    links:
+     - db
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    container_name: app
+    ports:
+     - "3000:3000"
+     - "35729:35729"
+    volumes:
+     - ./client:/usr/src/app
+    environment:
+     - NODE_ENV=development
+     - CHOKIDAR_USEPOLLING=true
+    links:
+     - ws
+  db:
+    image: mongo:4.0.5
+    container_name: db
+    ports:
+     - "27017:27017"
+    volumes:
+     - ./db:/data/db
