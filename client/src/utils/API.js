@@ -1,4 +1,23 @@
 import axios from "axios";
+import { Band, Musician, Venue } from '../models';
+
+let switchProfileType = function(data)
+{
+	// eslint-disable-next-line default-case
+	switch (data.profile._type) {
+		case "Band":
+			data.profile = new Band(data.profile);
+			break;
+		case "Musician":
+			data.profile = new Musician(data.profile);
+			break;
+		case "Venue":
+			data.profile = new Venue(data.profile);
+			break;
+	}
+	console.log(data.profile);
+	return data;
+};
 
 export default {
 
@@ -10,11 +29,10 @@ export default {
 		return axios.post("auth/signup", credentials);
 	},
 
-	getProfile: async function(id)
-	{
+	getProfile: async function (id) {
 		let response = await axios.get("../api/profile?id=" + id);
-		if(response.data.error) window.location.replace('../feeds');
-		return response.data;
+		if (response.data.error) window.location.replace('../feeds');
+		return switchProfileType(response.data);
 	},
 
 	postProfile: function (profile) {
@@ -33,7 +51,7 @@ export default {
 		let response = await axios.get(`${path}api/user`);
 		if (!response.data) window.location.replace('/signin');
 		else if (!response.data.profile) window.location.replace('/new');
-		return response.data;
+		return switchProfileType(response.data);
 	},
 
 	// Gets all 
@@ -45,7 +63,7 @@ export default {
 		return axios.post("api/post", post);
 	},
 
-	getSearchResults: function(search) {
+	getSearchResults: function (search) {
 		return axios.get("api/searchresults?search=" + search);
 	}
 };

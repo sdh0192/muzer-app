@@ -8,11 +8,11 @@ const VenueProfile = (props) => (
         <h1>{props.profile.name}</h1>
         <Row>
             <Col lg="3">
-                <img alt={props.profile.name} src={`/uploads/${props.profile.profilePic}`} />
+                <img className="profile-pic" alt={props.profile.name} src={`/uploads/${props.profile.profilePic}`} />
                 <h2>Phone Number</h2>
                 <p>{props.profile.phoneNumber}</p>
                 <h2>links</h2>
-                <ul>{props.profile.socialLinks.map(item => <li key={item.site}><a key={item.site} target="_blank" href={item.link}>{item.site}</a></li>)}</ul>
+                <ul>{props.profile.socialLinks.map(item => <li key={item.site}><a key={item.site} target="_blank" rel='noreferrer noopener' href={item.link}>{item.site}</a></li>)}</ul>
             </Col>
             <Col lg="5">
                 <h2>Bio</h2>
@@ -42,7 +42,7 @@ const VenueProfile = (props) => (
                 </Table>
             </Col>
             <Col lg="4">
-                <CalendarControl days={props.profile.availability.map(item => new Date(item))} readOnly />
+                <CalendarControl days={props.profile.availability} readOnly />
             </Col>
         </Row>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import NewsFeedNav from "../components/NewsFeedNav";
-import { Container, Row, Col, Form, Button, InputGroup, Alert } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Footer from "../components/Footer";
 import API from "../utils/API";
 import SearchResultBox from "../components/searchResultBox";

@@ -112,6 +112,8 @@ body {
     height: 45px;
 }
 
+.profile-pic { max-width: 100%; }
+
 .post-component {
     margin-top: 3px;
     background-color: white;

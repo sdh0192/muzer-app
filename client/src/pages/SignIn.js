@@ -2,10 +2,6 @@ import React from "react";
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import LandingLogo from '../components/LandingLogo';
 import Footer from "../components/Footer";
-// import ListControl from "../components/ListControl";
-// import CalendarControl from "../components/CalendarControl";
-// import PicControl from "../components/PicControl";
-//import NewsFeedNav from "../components/NewsFeedNav";
 
 import api from "../utils/API";
 
@@ -20,6 +16,7 @@ class SignIn extends React.Component {
     }
 
     validateLogin(e) {
+
         e.preventDefault();
         this.clearError();
 
@@ -33,12 +30,9 @@ class SignIn extends React.Component {
             message: "Password does not meet the lenght requirement."
         });
 
-        api.postSignin(credentials).then(response => {
-            if (response.data.error) {
-                this.setState(response.data);
-            }
-            else { window.location.replace("/feeds") }
-        });
+        api.postSignin(credentials)
+            .then(() => window.location.replace("/feeds"))
+            .catch((error) => this.setState(error.response.data));
     }
 
     render() {
@@ -65,7 +59,7 @@ class SignIn extends React.Component {
                         </Row>
                     </Container>
                 </div>
-                <Footer className="fixed-bottom"/>
+                <Footer className="fixed-bottom" />
             </React.Fragment>
         );
     }

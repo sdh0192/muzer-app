@@ -13,18 +13,15 @@ class Profile extends React.Component {
         currentProfile: null
     }
 
-    componentDidMount = async function()
-    {
+    componentDidMount = async function () {
         var id = this.props.match.params.id;
         let newState = {}
-        
-        if(id) 
-        {
+
+        if (id) {
             newState.currentUser = await API.autenticate("../");
             newState.currentProfile = await API.getProfile(id);
         }
-        else 
-        {
+        else {
             newState.currentUser = await API.autenticate("../");
             newState.currentProfile = newState.currentUser.profile;
         }
@@ -34,21 +31,20 @@ class Profile extends React.Component {
 
     render() {
         let print = null;
-        if(this.state.currentProfile) switch (this.state.currentProfile._type)
-        {
-            case "Musician":
-                print = <Musician profile={this.state.currentProfile} />
-                break;
-            case "Band":
-                print = <Band profile={this.state.currentProfile} />
-                break;
-            case "Venue":
-                print = <Venue profile={this.state.currentProfile} />
-                break;
-            default:
-                print = undefined;
-                break;
-        }
+        if (this.state.currentProfile) switch (this.state.currentProfile._type) {
+                case "Musician":
+                    print = <Musician profile={this.state.currentProfile} />
+                    break;
+                case "Band":
+                    print = <Band profile={this.state.currentProfile} />
+                    break;
+                case "Venue":
+                    print = <Venue profile={this.state.currentProfile} />
+                    break;
+                default:
+                    print = undefined;
+                    break;
+            }
         return (
             <React.Fragment>
                 <NewsFeedNav profile={this.state.currentUser && this.state.currentUser.profile ? this.state.currentUser.profile : null} />
@@ -57,7 +53,7 @@ class Profile extends React.Component {
                     <Container>{print}</Container>
                 </div>
                 <Footer />
-            </React.Fragment>           
+            </React.Fragment>
         );
     }
 }

@@ -35,12 +35,9 @@ class SignUp extends React.Component {
             message: "Password does not match."
         });
 
-        api.postSignup(credentials).then(response => {
-            if (response.data.error) {
-                this.setState(response.data);
-            }
-            else { window.location.replace("/new") }
-        });
+        api.postSignup(credentials)
+            .then(response => window.location.replace("/new"))
+            .catch(error => this.setState(error.response.data));
     }
 
     render() {
